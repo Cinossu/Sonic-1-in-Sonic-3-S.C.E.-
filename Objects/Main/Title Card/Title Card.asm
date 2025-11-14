@@ -140,9 +140,11 @@ Obj_TitleCard:
 .skiplevel3
 		movea.l	(Level_data_addr_RAM.PLCAnimals).w,a5
 		jsr	(LoadPLC_Raw_KosPlusM).w					; load animals art
+	if HUDNoScroll=0
 		moveq	#1,d0
 		move.b	d0,(HUD_RAM.status).w						; load HUD
 		move.b	d0,(Update_HUD_timer).w						; update time counter
+	endif
 		clr.w	(Ctrl_1_locked).w						; unlock control 1 and control 2
 
 .delete
@@ -177,6 +179,7 @@ Obj_TitleCardRedBanner:
 
 .loc_2D920
 		move.b	#224/2,height_pixels(a0)
+		rts
 		jmp	(Draw_Sprite).w
 
 ; =============== S U B R O U T I N E =======================================
@@ -224,6 +227,7 @@ Obj_TitleCardElement:
 		st	objoff_34(a1)
 
 .loc_2D99A
+		rts
 		jmp	(Draw_Sprite).w
 
 ; =============== S U B R O U T I N E =======================================

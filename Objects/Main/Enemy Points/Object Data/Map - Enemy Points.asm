@@ -2,14 +2,14 @@
 ; Sprite mappings - enemy score
 ; ---------------------------------------------------------------------------
 
-Map_EnemyScore:
-		dc.w word_2CF5E-Map_EnemyScore
-		dc.w word_2CF66-Map_EnemyScore
-		dc.w word_2CF6E-Map_EnemyScore
-		dc.w word_2CF76-Map_EnemyScore
-		dc.w word_2CF84-Map_EnemyScore
-		dc.w word_2CF8C-Map_EnemyScore
-		dc.w word_2CF9A-Map_EnemyScore
+Map_EnemyPoints:
+		dc.w word_2CF5E-Map_EnemyPoints
+		dc.w word_2CF66-Map_EnemyPoints
+		dc.w word_2CF6E-Map_EnemyPoints
+		dc.w word_2CF76-Map_EnemyPoints
+		dc.w word_2CF84-Map_EnemyPoints
+		dc.w word_2CF8C-Map_EnemyPoints
+		dc.w word_2CF9A-Map_EnemyPoints
 word_2CF5E:	dc.w 1
 		dc.b $FC, 4, 0, 0, $FF, $FA
 word_2CF66:	dc.w 1

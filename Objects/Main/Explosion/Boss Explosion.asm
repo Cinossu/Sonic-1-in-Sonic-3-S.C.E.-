@@ -239,7 +239,7 @@ Obj_BossExplosionOffset:
 
 ; init
 ObjDat_BossExplosion1:	subObjData Map_BossExplosion, $500, 0, TRUE, 24, 24, 0, 0, 0
-ObjDat_BossExplosion2:	subObjData Map_BossExplosion, $4D2, 0, TRUE, 24, 24, 0, 0, 0
+ObjDat_BossExplosion2:	subObjData Map_BossExplosion2, $4D2, 0, TRUE, 24, 24, 0, 0, 0
 
 Child6_MakeBossExplosion1:
 		dc.w 1-1
@@ -260,6 +260,8 @@ Child6_ExplosionSpecial:
 		dc.w 1-1
 		dc.l Obj_BossExplosionSpecial
 
+		; mappings
+	if Sonic1Explosion=0
 AniRaw_BossExplosion:
 		dc.b 0, 0	; frame, wait
 		dc.b 0, 1
@@ -270,7 +272,16 @@ AniRaw_BossExplosion:
 		dc.b 5, 4
 		dc.b arfJump
 	even
-; ---------------------------------------------------------------------------
-
-		; mappings
 		include "Objects/Main/Explosion/Object Data/Map - Boss Explosion.asm"
+	else
+AniRaw_BossExplosion:
+		dc.b 0, 0	; frame, wait
+		dc.b 0, 7
+		dc.b 1, 7
+		dc.b 2, 7
+		dc.b 3, 7
+		dc.b 4, 7
+		dc.b arfJump
+	even
+		include "Objects/Main/Explosion/Object Data/Map - Boss Explosion (Sonic 1).asm"
+	endif

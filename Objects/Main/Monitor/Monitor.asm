@@ -323,30 +323,52 @@ loc_1D850:
 		move.b	anim(a0),d0
 		add.w	d0,d0
 		add.w	d0,d0
-		jmp	.index(pc,d0.w)
+		movea.l	.index(pc,d0.w),a2
+		jmp	(a2)
 ; ---------------------------------------------------------------------------
 
-.index
-		bra.s	Monitor_Give_Eggman						; 0
-		rts									; nop
-		bra.s	Monitor_Give_1up						; 2
-		rts									; nop
-		bra.s	Monitor_Give_Eggman						; 4
-		rts									; nop
-		bra.s	Monitor_Give_Rings						; 6
-		rts									; nop
-		bra.s	Monitor_Give_SpeedShoes						; 8
-		rts									; nop
-		bra.s	Monitor_Give_Fire_Shield					; A
-		rts									; nop
-		bra.w	Monitor_Give_Lightning_Shield					; C
-		bra.w	Monitor_Give_Bubble_Shield					; E
-		bra.w	Monitor_Give_Invincibility					; 10
-		bra.w	Monitor_Give_SuperSonic						; 12
+.index:
+;	rept	12
+;		dc.l	Monitor_Give_Test
+;	endr
+
+		dc.l	Monitor_Give_Nothing
+		dc.l	Monitor_Give_1up
+		dc.l	Monitor_Give_Eggman
+		dc.l	Monitor_Give_Rings
+		dc.l	Monitor_Give_SpeedShoes
+	if NoElementalShields=0
+		dc.l	Monitor_Give_Fire_Shield
+		dc.l	Monitor_Give_Lightning_Shield
+		dc.l	Monitor_Give_Bubble_Shield
+	else
+		dc.l	Monitor_Give_Blue_Shield
+		dc.l	Monitor_Give_Blue_Shield
+		dc.l	Monitor_Give_Blue_Shield
+	endif
+		dc.l	Monitor_Give_Invincibility
+		dc.l	Monitor_Give_SuperSonic
+		dc.l	Monitor_Give_Blue_Shield
 ; ---------------------------------------------------------------------------
 
-		; give blue shield							; 14
+Monitor_Give_Test:
+		movem.l	d0-d4,-(sp)
+		locVRAM	(VRAM_Plane_W_Name_Table),d0
+		lea	(WindowTestScreen).l,a1
+		moveq	#39,d1
+		moveq	#27,d2
+		jsr	(Plane_Map_To_VRAM).w
+		movem.l	(sp)+,d0-d4
+		lea	(VDP_control_port).l,a6
+		move.w	#$921C,(a6)
 
+; ---------------------------------------------------------------------------
+
+Monitor_Give_Nothing:
+		rts
+; ---------------------------------------------------------------------------
+
+Monitor_Give_Blue_Shield:
 		; sets Status_Shield, Status_FireShield, Status_LtngShield, and Status_BublShield to 0
 		andi.b	#~( \
 			setBit(status_secondary.shield) | \
@@ -392,7 +414,7 @@ Monitor_Give_Rings:
 		moveq	#10,d0								; add 10 rings
 		jmp	(AddRings).w
 ; ---------------------------------------------------------------------------
-
+	if NoElementalShields=0
 Monitor_Give_Fire_Shield:
 
 		; sets Status_Shield, Status_FireShield, Status_LtngShield, and Status_BublShield to 0
@@ -442,6 +464,7 @@ Monitor_Give_Bubble_Shield:
 		move.l	#Obj_BubbleShield,(Shield+address).w
 		move.w	a1,(Shield+parent).w
 		sfx	sfx_BubbleShield,1
+	endif
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_Invincibility:
@@ -468,7 +491,6 @@ Monitor_Give_Invincibility:
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_SuperSonic:
-
 	if SonKnuxTransform
 
 		; check level
@@ -544,4 +566,10 @@ Monitor_Give_SuperSonic:
 
 		; mappings
 		include "Objects/Main/Monitor/Object Data/Anim - Monitor.asm"
+	if Sonic1Monitors=0
 		include "Objects/Main/Monitor/Object Data/Map - Monitor.asm"
+	elseif Sonic1Palette=0
+		include "Objects/Main/Monitor/Object Data/Map - Monitor (Sonic 1) S3 Palette.asm"
+	else
+		include "Objects/Main/Monitor/Object Data/Map - Monitor (Sonic 1).asm"
+	endif

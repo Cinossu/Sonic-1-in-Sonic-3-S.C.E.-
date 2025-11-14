@@ -8,7 +8,7 @@ Obj_Spring:
 
 		; init
 		move.l	#Map_Spring,mappings(a0)
-		move.w	#make_art_tile(ArtTile_SpikesSprings,0,FALSE),art_tile(a0)	; set red
+		move.w	#make_art_tile(ArtTile_Spring,0,FALSE),art_tile(a0)	; set red
 		ori.b	#setBit(render_flags.level),render_flags(a0)			; use screen coordinates
 		move.l	#bytes_word_to_long(32/2,32/2,priority_4),height_pixels(a0)	; set height, width and priority
 		move.w	x_pos(a0),objoff_32(a0)
@@ -170,8 +170,7 @@ sub_22F98:
 		clr.b	spin_dash_flag(a1)
 		move.b	#AniIDSonAni_Spring,anim(a1)
 		move.b	#PlayerID_Control,routine(a1)
-
-		; check
+	if Sonic1Sonic=0
 		move.b	subtype(a0),d0
 		btst	#0,d0
 		beq.s	loc_23020
@@ -189,7 +188,7 @@ loc_23010:
 		beq.s	loc_23020
 		neg.b	flip_angle(a1)
 		neg.w	ground_vel(a1)
-
+	endif
 loc_23020:
 		andi.b	#$C,d0
 		cmpi.b	#4,d0
@@ -564,6 +563,7 @@ loc_23542:
 		clr.b	jumping(a1)
 		move.b	#AniIDSonAni_Spring,anim(a1)
 		move.b	#PlayerID_Control,routine(a1)
+	if Sonic1Sonic=0
 		move.b	subtype(a0),d0
 		btst	#0,d0
 		beq.s	loc_235A2
@@ -581,7 +581,7 @@ loc_23592:
 		beq.s	loc_235A2
 		neg.b	flip_angle(a1)
 		neg.w	ground_vel(a1)
-
+	endif
 loc_235A2:
 		andi.b	#$C,d0
 		cmpi.b	#4,d0
@@ -697,5 +697,10 @@ loc_236E2:
 
 		; mappings
 		include "Objects/Main/Spring/Object Data/Anim - Spring.asm"
-		include "Objects/Main/Spring/Object Data/Map - Spring(Red).asm"
-		include "Objects/Main/Spring/Object Data/Map - Spring(Yellow).asm"
+	if Sonic1Spring=0
+		include "Objects/Main/Spring/Object Data/Map - Spring (Red).asm"
+		include "Objects/Main/Spring/Object Data/Map - Spring (Yellow).asm"
+	else
+		include "Objects/Main/Spring/Object Data/Map - Spring (Red) (Sonic 1).asm"
+		include "Objects/Main/Spring/Object Data/Map - Spring (Yellow) (Sonic 1).asm"
+	endif

@@ -3,17 +3,17 @@
 ; ---------------------------------------------------------------------------
 
 Level_VDP:
-		dc.w $8004								; disable HInt, HV counter, 8-colour mode
-		dc.w $8200+(VRAM_Plane_A_Name_Table>>10)				; set foreground nametable address
-		dc.w $8300+(VRAM_Plane_B_Name_Table>>10)				; set window nametable address
-		dc.w $8400+(VRAM_Plane_B_Name_Table>>13)				; set background nametable address
-		dc.w $8700+(2<<4)							; set background colour (line 3; colour 0)
-		dc.w $8B03								; line scroll mode
-		dc.w $8C81								; set 40cell screen size, no interlacing, no s/h
-		dc.w $9001								; 64x32 cell nametable area
-		dc.w $9100								; set window H position at default
-		dc.w $9200								; set window V position at default
-		dc.w 0									; end marker
+		dc.w $8004										; disable HInt, HV counter, 8-colour mode
+		dc.w $8200+(VRAM_Plane_A_Name_Table>>10)						; set foreground nametable address
+		dc.w $8300+(VRAM_Plane_W_Name_Table>>10)						; set window nametable address
+		dc.w $8400+(VRAM_Plane_B_Name_Table>>13)						; set background nametable address
+		dc.w $8700+(2<<4)									; set background colour (line 3; colour 0)
+		dc.w $8B03										; line scroll mode
+		dc.w $8C81										; set 40cell screen size, no interlacing, no s/h
+		dc.w $9001										; 64x32 cell nametable area
+		dc.w $9100										; set window H position at default
+		dc.w $9200										; set window V position at default
+		dc.w 0											; end marker
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -225,7 +225,11 @@ LevelScreen:
 		move.l	#VInt_Level,(V_int_ptr).w					; set VInt pointer
 		andi.b	#$7F,(Last_star_post_hit).w
 		bclr	#GameModeFlag_TitleCard,(Game_mode).w				; subtract $80 from mode to end pre-level stuff
-
+	if HUDNoScroll=1
+		moveq	#1,d0
+		move.b	d0,(HUD_RAM.status).w						; load HUD
+		move.b	d0,(Update_HUD_timer).w						; update time counter
+	endif
 .loop
 		jsr	(Pause_Game).w
 		st	(V_int_flag).w							; set VInt flag
@@ -431,9 +435,10 @@ SpawnLevelMainSprites_SpawnPowerup:
 ; ---------------------------------------------------------------------------
 
 .fireshield
-
 		; load player
 		lea	(Player_1).w,a1							; a1=character
+
+	if NoElementalShields=0
 
 		; check shields
 		btst	#status_secondary.fire_shield,d0
@@ -493,6 +498,7 @@ SpawnLevelMainSprites_SpawnPowerup:
 ; ---------------------------------------------------------------------------
 
 .blueshield
+	endif
 		btst	#status_secondary.shield,d0
 		beq.s	.notshield
 

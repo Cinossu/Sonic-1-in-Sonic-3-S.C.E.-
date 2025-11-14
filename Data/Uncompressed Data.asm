@@ -3,12 +3,26 @@
 ; ===========================================================================
 
 ;		Attribute	| Filename	| Folder
-
+	if Sonic1Rings=0
 		incfile.b	ArtUnc_Ring, "Objects/Main/Rings/Uncompressed Art/Rings.unc"
+	else
+		incfile.b	ArtUnc_Ring, "Objects/Main/Rings/Uncompressed Art/Rings (Sonic 1).unc"
+	endif
+	if Sonic1HUD=0
 		incfile.b	ArtUnc_HUDDigits, "Objects/Renders/HUD/Uncompressed Art/HUD Digits.unc"
 		incfile.b	ArtUnc_LivesDigits, "Objects/Renders/HUD/Uncompressed Art/Lives Digits.unc"
+	else
+		incfile.b	ArtUnc_HUDDigits, "Objects/Renders/HUD/Uncompressed Art/HUD Digits (Sonic 1).unc"
+		incfile.b	ArtUnc_LivesDigits, "Objects/Renders/HUD/Uncompressed Art/Lives Digits (Sonic 1).unc"
+	endif
 		incfile.b	ArtUnc_DebugDigits, "Objects/Renders/HUD/Uncompressed Art/Debug Digits.unc"
+	if Sonic1Sonic=0
 		incfile.b	ArtUnc_EndSigns, "Objects/Main/Signpost/Uncompressed Art/End Signs.unc"
+	elseif Sonic1Palette=0
+		incfile.b	ArtUnc_EndSigns, "Objects/Main/Signpost/Uncompressed Art/End Signs (Sonic 1) S3 Palette.unc"
+	else
+		incfile.b	ArtUnc_EndSigns, "Objects/Main/Signpost/Uncompressed Art/End Signs (Sonic 1).unc"
+	endif
 		incfile.be	ArtUnc_SignpostStub, "Objects/Main/Signpost/Uncompressed Art/Stub.unc"
 		incfile.b	ArtUnc_BigRing, "Objects/Main/Big Ring/Uncompressed Art/Big Ring.unc"
 		incfile.b	ArtUnc_BigRingFlash, "Objects/Main/Big Ring/Uncompressed Art/Big Ring Flash.unc"
@@ -97,3 +111,8 @@
 		incfile.b	ArtUnc_LZConveyor, "Levels/LZ/Tiles/Animated/Uncompressed Art/Conveyor Wheel.unc"
 		incfile.b	ArtUnc_SBZSmoke, "Levels/SBZ/Tiles/Animated/Uncompressed Art/Background Smoke.unc"
 		incfile.b	ArtUnc_EndingFlowers, "Levels/GHZ/Tiles/Animated/Uncompressed Art/Ending Flowers.unc"
+
+WindowTestScreen:
+    rept 1120
+	dc.l	$40404040
+    endr

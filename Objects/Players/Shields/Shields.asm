@@ -7,7 +7,7 @@
 ; ---------------------------------------------------------------------------
 
 ; =============== S U B R O U T I N E =======================================
-
+	if NoElementalShields=0
 Obj_FireShield:
 
 		; init
@@ -94,14 +94,20 @@ Obj_FireShield:
 
 ; =============== S U B R O U T I N E =======================================
 
-Obj_LightningShield:
-
+Obj_LightningShield_LoadSparks:
 .artsize	:= (ArtUnc_LightningShield_Sparks_end-ArtUnc_LightningShield_Sparks)&$FFFF
 
-		; load spark art
 		QueueStaticDMA ArtUnc_LightningShield_Sparks,.artsize,tiles_to_bytes(ArtTile_Shield_Sparks)
+		rts
+.nexttime
+		move.b	#1,objoff_30(a0)
+.return
+		rts
 
+Obj_LightningShield:
+		move.b	#1,objoff_30(a0)
 		; init
+.skiploadart
 		movem.l	ObjDat_LightningShield(pc),d0-d3				; copy data to d0-d3
 		movem.l	d0-d3,address(a0)						; set data from d0-d3 to current object
 
@@ -117,13 +123,18 @@ Obj_LightningShield:
 .main
 		movea.w	parent(a0),a2							; a2=character
 		btst	#status_secondary.invincible,status_secondary(a2)		; is player invincible?
-		bne.s	Obj_FireShield.return						; if so, do not display and do not update variables
+		bne.s	Obj_LightningShield_LoadSparks.nexttime				; if so, do not display, do not update variables, and set sparks for reload
 		cmpi.b	#AniIDSonAni_Blank,anim(a2)					; is player in their 'blank' animation?
-		beq.s	Obj_FireShield.return						; if so, do not display and do not update variables
+		beq.w	Obj_LightningShield_LoadSparks.return				; if so, do not display and do not update variables
 		btst	#status_secondary.shield,status_secondary(a2)			; should the player still have a shield?
-		beq.s	.destroy							; if not, change to Insta-Shield
+		beq.w	.destroy							; if not, change to Insta-Shield
 		btst	#status.player.underwater,status(a2)				; is player underwater?
 		bne.s	.destroyunderwater						; if so, branch
+		tst.b	objoff_30(a0)							; do we need to reload sparks art?
+		beq.s	.noreloadart							; if not, branch
+		bsr.w	Obj_LightningShield_LoadSparks					; load sparks art
+		move.b	#0,objoff_30(a0)						; unset reload flag
+.noreloadart
 		move.w	x_pos(a2),x_pos(a0)
 		move.w	y_pos(a2),y_pos(a0)
 		move.b	status(a2),status(a0)						; inherit status
@@ -207,6 +218,7 @@ Obj_LightningShield:
 ; ---------------------------------------------------------------------------
 ; Create Lightning Shield (Spark)
 ; ---------------------------------------------------------------------------
+	endif
 
 SparkVelocities:	; x_vel, y_vel
 		dc.w -$200, -$200
@@ -215,7 +227,6 @@ SparkVelocities:	; x_vel, y_vel
 		dc.w $200, $200
 
 ; =============== S U B R O U T I N E =======================================
-
 Obj_LightningShield_Create_Spark:
 		moveq	#1,d2								; set anim
 
@@ -246,7 +257,6 @@ Obj_LightningShield_Create_Spark:
 ; ---------------------------------------------------------------------------
 
 ; =============== S U B R O U T I N E =======================================
-
 Obj_LightningShield_Spark:
 		MoveSprite a0, $18
 		lea	Ani_LightningShield(pc),a1
@@ -276,7 +286,7 @@ Obj_LightningShield_DestroyUnderwater2:
 ; ---------------------------------------------------------------------------
 
 ; =============== S U B R O U T I N E =======================================
-
+	if NoElementalShields=0
 Obj_BubbleShield:
 
 		; init
@@ -340,7 +350,7 @@ Obj_BubbleShield:
 
 .return
 		rts
-
+	endif
 ; ---------------------------------------------------------------------------
 ; Blue Shield
 ; ---------------------------------------------------------------------------
@@ -348,7 +358,6 @@ Obj_BubbleShield:
 ; =============== S U B R O U T I N E =======================================
 
 Obj_BlueShield:
-
 		; init
 		movem.l	ObjDat_BlueShield(pc),d0-d3					; copy data to d0-d3
 		movem.l	d0-d3,address(a0)						; set data from d0-d3 to current object
@@ -478,13 +487,13 @@ Obj_InstaShield:
 
 ; =============== S U B R O U T I N E =======================================
 
+	if Sonic1Invincibility=0
 Obj_Invincibility:
 
 .artsize	:= (ArtUnc_Invincibility_end-ArtUnc_Invincibility)&$FFFF
 
 		; load invincibility art
 		QueueStaticDMA ArtUnc_Invincibility,.artsize,tiles_to_bytes(ArtTile_Shield)
-
 		; init
 		moveq	#0,d2
 		lea	off_187DE-6(pc),a2
@@ -557,14 +566,14 @@ Obj_Invincibility:
 
 ; =============== S U B R O U T I N E =======================================
 
-Obj_188E8:
+.main_sub
 		tst.b	(Super_Sonic_Knux_flag).w					; is Sonic Super/Hyper?
-		bne.s	Obj_Invincibility.delete					; if so, branch
+		bne.s	.delete								; if so, branch
 		tst.b	(Super_Tails_flag).w						; is Tails Super?
-		bne.s	Obj_Invincibility.delete					; if so, branch
+		bne.s	.delete								; if so, branch
 		movea.w	parent(a0),a1							; a1=character
 		btst	#status_secondary.invincible,status_secondary(a1)		; should the player still have a invincible?
-		beq.s	Obj_Invincibility.delete					; if not, delete
+		beq.s	.delete								; if not, delete
 		lea	(Pos_table_index).w,a5
 		lea	(Pos_table).w,a6
 		moveq	#0,d1
@@ -584,15 +593,15 @@ Obj_188E8:
 		lea	sub2_x_pos(a0),a2
 		movea.l	objoff_30(a0),a3
 
-.find
+.find_sub
 		move.w	objoff_38(a0),d2
 		move.b	(a3,d2.w),d5
-		bpl.s	.found
+		bpl.s	.found_sub
 		clr.w	objoff_38(a0)
-		bra.s	.find
+		bra.s	.find_sub
 ; ---------------------------------------------------------------------------
 
-.found
+.found_sub
 		swap	d5
 		add.b	objoff_35(a0),d2
 		move.b	(a3,d2.w),d5
@@ -611,10 +620,10 @@ Obj_188E8:
 		move.w	d5,(a2)+							; sub3_mapframe
 		moveq	#2,d0
 		btst	#status.player.x_flip,status(a1)
-		beq.s	.notflip
+		beq.s	.notflip_sub
 		neg.w	d0
 
-.notflip
+.notflip_sub
 		add.b	d0,objoff_34(a0)
 		jmp	(Draw_Sprite).w
 
@@ -684,10 +693,73 @@ byte_18A1B:
 		dc.b 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, $FF, 1, 2, 3, 4, 5, 6, 7
 		dc.b 6, 5, 4, 3, 2
 	even
+	else
+
+; =============== SONIC 1 == S U B R O U T I N E =======================================
+
+Obj_Invincibility:
+
+.artsize	:= (ArtUnc_Invincibility_end-ArtUnc_Invincibility)&$FFFF
+
+		; load invincibility art
+		QueueStaticDMA ArtUnc_Invincibility,.artsize,tiles_to_bytes(ArtTile_Shield)
+		; init
+		moveq	#0,d2
+		lea	(a0),a1
+		moveq	#3,d1
+
+.loop
+		movem.l	ObjDat_Invincibility(pc),d0/d3-d5				; copy data to d0/d3-d5
+		movem.l	d0/d3-d5,address(a1)						; set data from d0/d3-d5 to current object
+		move.w	parent(a0),parent(a1)
+		move.b	d2,anim(a1)
+		addq.w	#1,d2
+		lea	next_object(a1),a1
+		dbf	d1,.loop
+
+.main
+		tst.b	(Super_Sonic_Knux_flag).w					; is Sonic Super/Hyper?
+		bne.s	.delete								; if so, branch
+		tst.b	(Super_Tails_flag).w						; is Tails Super?
+		bne.s	.delete								; if so, branch
+		movea.w	parent(a0),a1							; a1=character
+		btst	#status_secondary.invincible,status_secondary(a1)		; should the player still have a invincible?
+		beq.s	.delete
+
+		move.w	(Pos_table_index).w,d0 ; get index value for tracking data
+		move.b	anim(a0),d1
+		lsl.b	#3,d1		; multiply animation number by 8
+		move.b	d1,d2
+		add.b	d1,d1
+		add.b	d2,d1		; multiply by 3
+		addq.b	#4,d1
+		sub.b	d1,d0
+		move.b	objoff_30(a0),d1
+		sub.b	d1,d0		; use earlier tracking data to create trail
+		addq.b	#4,d1
+		cmpi.b	#$18,d1
+		bcs.s	.pos
+		moveq	#0,d1
+.pos
+		move.b	d1,objoff_30(a0)
+		lea	(Pos_table).w,a2
+		lea	(a2,d0.w),a2
+		move.w	(a2)+,x_pos(a0)
+		move.w	(a2)+,y_pos(a0)
+		move.b	status(a1),status(a0)
+		lea	(Ani_Invincibility).l,a1
+		jsr	(Animate_Sprite).w
+		jmp	(Draw_Sprite).w
+
+.delete
+		jmp	(Delete_Current_Sprite).w
+
+	endif
 
 ; =============== S U B R O U T I N E =======================================
 
 ; init
+	if NoElementalShields=0
 ObjDat_FireShield:		subObjMainData \
 				Obj_FireShield.main, \
 					setBit(render_flags.level), \
@@ -702,7 +774,7 @@ ObjDat_BubbleShield:		subObjMainData \
 				Obj_BubbleShield.main, \
 					setBit(render_flags.level), \
 				0, 48, 48, 1, ArtTile_Shield, 0, FALSE, Map_BubbleShield
-
+	endif
 ObjDat_BlueShield:		subObjMainData \
 				Obj_BlueShield.main, \
 					setBit(render_flags.level), \
@@ -713,34 +785,60 @@ ObjDat_InstaShield:		subObjMainData \
 					setBit(render_flags.level), \
 				0, 48, 48, 1, ArtTile_Shield, 0, FALSE, Map_InstaShield
 
+	if Sonic1Invincibility=0
 ObjDat_Invincibility:		subObjMainData \
-				Obj_188E8, \
+				Obj_Invincibility.main_sub, \
 					setBit(render_flags.level) | \
 					setBit(render_flags.multi_sprite), \
 				0, 32, 32, 1, ArtTile_Shield, 0, FALSE, Map_Invincibility
+	else
+ObjDat_Invincibility:		subObjMainData \
+				Obj_Invincibility.main, \
+					setBit(render_flags.level), \
+				0, 48, 48, 1, ArtTile_Shield, 0, FALSE, Map_Invincibility
+	endif
 
 ; dplc
+	if NoElementalShields=0
 PLCPtr_FireShield:		DPLCEntry ArtUnc_FireShield, DPLC_FireShield
 PLCPtr_LightningShield:		DPLCEntry ArtUnc_LightningShield, DPLC_LightningShield
 PLCPtr_BubbleShield:		DPLCEntry ArtUnc_BubbleShield, DPLC_BubbleShield
+	endif
 PLCPtr_BlueShield:		DPLCEntry ArtUnc_BlueShield, DPLC_BlueShield
 PLCPtr_InstaShield:		DPLCEntry ArtUnc_InstaShield, DPLC_InstaShield
 ; ---------------------------------------------------------------------------
 
 		; mappings
-		include "Objects/Players/Shields/Object Data/Anim - Fire Shield.asm"
-		include "Objects/Players/Shields/Object Data/Anim - Lightning Shield.asm"
-		include "Objects/Players/Shields/Object Data/Anim - Bubble Shield.asm"
-		include "Objects/Players/Shields/Object Data/Anim - Blue Shield.asm"
-		include "Objects/Players/Shields/Object Data/Anim - Insta-Shield.asm"
+	if Sonic1Invincibility=0
 		include "Objects/Players/Shields/Object Data/Map - Invincibility.asm"
+	else
+		include "Objects/Players/Shields/Object Data/Anim - Invincibility (Sonic 1).asm"
+		include "Objects/Players/Shields/Object Data/Map - Invincibility (Sonic 1).asm"
+
+	endif
+
+	if NoElementalShields=0
+		include "Objects/Players/Shields/Object Data/Anim - Fire Shield.asm"
 		include "Objects/Players/Shields/Object Data/Map - Fire Shield.asm"
 		include "Objects/Players/Shields/Object Data/DPLC - Fire Shield.asm"
+	endif
+		include "Objects/Players/Shields/Object Data/Anim - Lightning Shield.asm"
+	if NoElementalShields=0
 		include "Objects/Players/Shields/Object Data/Map - Lightning Shield.asm"
 		include "Objects/Players/Shields/Object Data/DPLC - Lightning Shield.asm"
+		include "Objects/Players/Shields/Object Data/Anim - Bubble Shield.asm"
 		include "Objects/Players/Shields/Object Data/Map - Bubble Shield.asm"
 		include "Objects/Players/Shields/Object Data/DPLC - Bubble Shield.asm"
+	endif
+	if Sonic1Shield=0
+		include "Objects/Players/Shields/Object Data/Anim - Blue Shield.asm"
 		include "Objects/Players/Shields/Object Data/Map - Blue Shield.asm"
 		include "Objects/Players/Shields/Object Data/DPLC - Blue Shield.asm"
+	else
+		include "Objects/Players/Shields/Object Data/Anim - Blue Shield (Sonic 1).asm"
+		include "Objects/Players/Shields/Object Data/Map - Blue Shield (Sonic 1).asm"
+		include "Objects/Players/Shields/Object Data/DPLC - Blue Shield (Sonic 1).asm"
+	endif
+		include "Objects/Players/Shields/Object Data/Anim - Insta-Shield.asm"
 		include "Objects/Players/Shields/Object Data/Map - Insta-Shield.asm"
 		include "Objects/Players/Shields/Object Data/DPLC - Insta-Shield.asm"

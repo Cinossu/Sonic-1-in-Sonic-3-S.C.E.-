@@ -46,9 +46,15 @@ Get_LevelSizeStart:
 		move.w	d0,(Player_1+y_pos).w						; set Sonic's position on y-axis
 
 .skipstartpos
-		subi.w	#320/2,d1							; is Sonic more than 160px from left edge?
-		bhs.s	.withinleft							; if yes, branch
+		subi.w	#320/2,d1						       ; is Sonic more than 160px from the absolute left edge?
+		bhs.s	.withinleftzero							; if yes, branch
 		moveq	#0,d1
+
+.withinleftzero
+		move.w	(Camera_min_X_pos).w,d2
+		cmp.w	d2,d1								; is Sonic inside the left edge of the camera?
+		bhi.s	.withinleft							; if yes, branch
+		move.w	d2,d1
 
 .withinleft
 		move.w	(Camera_max_X_pos).w,d2
@@ -58,12 +64,18 @@ Get_LevelSizeStart:
 
 .withinright
 		move.w	d1,(Camera_X_pos).w						; set horizontal screen position
-		subi.w	#(224/2)-16,d0							; is Sonic within 96px of upper edge?
-		bhs.s	.withintop							; if yes, branch
+
+		subi.w	#(224/2)-16,d0							; is Sonic within 96px of the absolute upper edge?
+		bhs.s	.withintopzero							; if yes, branch
 		moveq	#0,d0
 
+.withintopzero
+		cmp.w	(Camera_min_Y_pos).w,d0						; is Sonic below the top edge of the camera?
+		bgt.s	.withintop							; if yes, branch
+		move.w	(Camera_min_Y_pos).w,d0
+
 .withintop
-		cmp.w	(Camera_max_Y_pos).w,d0						; is Sonic above the bottom edge?
+		cmp.w	(Camera_max_Y_pos).w,d0						; is Sonic above the bottom edge of the camera?
 		blt.s	.withinbottom							; if yes, branch
 		move.w	(Camera_max_Y_pos).w,d0
 

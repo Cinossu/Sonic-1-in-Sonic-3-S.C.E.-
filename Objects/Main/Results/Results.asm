@@ -337,11 +337,17 @@ LevelResults_MoveElement:
 		movea.w	parent2(a0),a1							; a1=parent object
 		move.w	objoff_32(a1),d0
 		beq.s	.loc_2DE38
+	if HUDNoScroll=0
 		tst.b	render_flags(a0)						; object visible on the screen?
 		bmi.s	.loc_2DE20							; if yes, branch
 		subq.w	#1,objoff_30(a1)						; if offscreen, subtract from number of elements and delete
 		addq.w	#4,sp								; exit from current object
 		jmp	(Delete_Current_Sprite).w
+	else
+		subq.w	#1,objoff_30(a1)						; if offscreen, subtract from number of elements and delete
+		addq.w	#4,sp								; exit from current object
+		rts
+	endif
 ; ---------------------------------------------------------------------------
 
 .loc_2DE20

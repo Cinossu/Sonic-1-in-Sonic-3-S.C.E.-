@@ -40,7 +40,7 @@ Obj_Spikes:
 		; set priority and art_tile
 		move.l	#words_to_long( \
 		priority_4, \
-			make_art_tile(ArtTile_SpikesSprings,0,FALSE) \
+			make_art_tile(ArtTile_Spikes,0,FALSE) \
 		),priority(a0)
 
 		lsr.w	d0
@@ -324,4 +324,8 @@ MoveSpikes_Delay:
 ; ---------------------------------------------------------------------------
 
 		; mappings
+	if Sonic1Spikes=0
 		include "Objects/Main/Spikes/Object Data/Map - Spikes.asm"
+	else
+		include "Objects/Main/Spikes/Object Data/Map - Spikes (Sonic 1).asm"
+	endif

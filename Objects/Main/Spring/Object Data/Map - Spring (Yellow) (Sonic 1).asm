@@ -14,32 +14,36 @@ Map_Spring2:
 		dc.w word_238B6-Map_Spring2	; Diagonal Spring
 		dc.w word_238CA-Map_Spring2	; Diagonal Spring
 		dc.w word_238EA-Map_Spring2	; Diagonal Spring
-word_237AC:
-		dc.w 2
-		dc.b $F8, $C, $20, $10, $FF, $F0
-		dc.b 0, 4, 0, $14, $FF, $F8
-word_237BA:
-		dc.w 1
-		dc.b 0, $C, $20, $10, $FF, $F0
-word_237C2:
-		dc.w 2
-		dc.b $E8, $C, $20, $10, $FF, $F0
-		dc.b $F0, 6, 0, $16, $FF, $F8
-word_237F4:
-		dc.w 2
-		dc.b $F0, 3, $20, $1C, 0, 0
-		dc.b $F8, 1, 0, $20, $FF, $F8
-word_23802:
-		dc.w 1
-		dc.b $F0, 3, $20, $1C, $FF, $F8
-word_2380A:
-		dc.w 2
-		dc.b $F0, 3, $20, $1C, 0, $10
-		dc.b $F8, 9, 0, $22, $FF, $F8
-word_23826:
-		dc.w 2
-		dc.b 0, $C, $30, $10, $FF, $F0
-		dc.b $F8, 4, $10, $14, $FF, $F8
+
+word_237AC:	dc.w 2			; facing up
+		dc.b $F8, $C, $20, 0, $FF, $F0
+		dc.b 0,	$C, 0, 4, $FF, $F0
+
+word_237BA:	dc.w 1			; facing up, flattened
+		dc.b 0,	$C, $20, 0, $FF, $F0
+
+word_237C2:	dc.w 3			; facing up, extended
+		dc.b $E8, $C, $20, 0, $FF, $F0
+		dc.b $F0, 5, 0,	8, $FF, $F8
+		dc.b 0,	$C, 0, $C, $FF, $F0
+		
+word_237F4:	dc.w 2			; facing left
+		dc.b $F0, 3, 0,	$10, $FF, $F8
+		dc.b $F0, 3, $20, $14, 0, 0
+
+word_23802:	dc.w 1			; facing left, flattened
+		dc.b $F0, 3, $20, $14, $FF, $F8
+
+word_2380A:	dc.w 4			; facing left, extended
+		dc.b $F0, 3, $20, $14, 0, $10
+		dc.b $F8, 9, 0,	$18, $FF, $F8
+		dc.b $F0, 0, 0,	$10, $FF, $F8
+		dc.b 8,	0, 0, $13, $FF, $F8
+
+word_23826:	dc.w 2			; facing down
+		dc.b 0, $C, $30, 0, $FF, $F0
+		dc.b $F8, $C, $10, 4, $FF, $F0
+
 word_2389C:
 		dc.w 4
 		dc.b $F1, 8, $20, $A, $FF, $EB

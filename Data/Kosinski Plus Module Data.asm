@@ -4,8 +4,26 @@
 
 ;		Attribute	| Filename	| Folder
 
+	if Sonic1HUD=0
 		incfile.b	ArtKosPM_HUD, "Objects/Renders/HUD/KosinskiPM Art/HUD.kospm"
+		incfile.b	ArtKosPM_SonicLifeName, "Objects/Renders/HUD/KosinskiPM Art/Sonic Life Name.kospm"
+		incfile.b	ArtKosPM_MilesLifeName, "Objects/Renders/HUD/KosinskiPM Art/Miles Life Name.kospm"
+		incfile.b	ArtKosPM_TailsLifeName, "Objects/Renders/HUD/KosinskiPM Art/Tails Life Name.kospm"
+		incfile.b	ArtKosPM_KnucklesLifeName, "Objects/Renders/HUD/KosinskiPM Art/Knuckles Life Name.kospm"
+	else
+		incfile.b	ArtKosPM_HUD, "Objects/Renders/HUD/KosinskiPM Art/HUD (Sonic 1).kospm"
+		incfile.b	ArtKosPM_SonicLifeName, "Objects/Renders/HUD/KosinskiPM Art/Sonic Life Name (Sonic 1).kospm"
+		incfile.b	ArtKosPM_MilesLifeName, "Objects/Renders/HUD/KosinskiPM Art/Miles Life Name (Sonic 1).kospm"
+		incfile.b	ArtKosPM_TailsLifeName, "Objects/Renders/HUD/KosinskiPM Art/Tails Life Name (Sonic 1).kospm"
+		incfile.b	ArtKosPM_KnucklesLifeName, "Objects/Renders/HUD/KosinskiPM Art/Knuckles Life Name (Sonic 1).kospm"
+	endif
+	if Sonic1Sonic=0
 		incfile.b	ArtKosPM_SonicLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Sonic Life Icon.kospm"
+	elseif Sonic1Palette=0
+		incfile.b	ArtKosPM_SonicLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Sonic Life Icon (Sonic 1) S3 Palette.kospm"
+	else
+		incfile.b	ArtKosPM_SonicLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Sonic Life Icon (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_MilesLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Miles Life Icon.kospm"
 		incfile.b	ArtKosPM_TailsLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Tails Life Icon.kospm"
 		incfile.b	ArtKosPM_KnucklesLifeIcon, "Objects/Renders/HUD/KosinskiPM Art/Knuckles Life Icon.kospm"
@@ -19,13 +37,46 @@
 ;		Attribute	| Filename	| Folder
 
 		incfile.b	ArtKosPM_Ring_Sparks, "Objects/Main/Rings/KosinskiPM Art/Sparks.kospm"
+	if Sonic1Monitors=0
 		incfile.b	ArtKosPM_Monitors, "Objects/Main/Monitor/KosinskiPM Art/Monitors.kospm"
+	elseif Sonic1Palette=0
+		incfile.b	ArtKosPM_Monitors, "Objects/Main/Monitor/KosinskiPM Art/Monitors (Sonic 1) S3 Palette.kospm"
+	else
+		incfile.b	ArtKosPM_Monitors, "Objects/Main/Monitor/KosinskiPM Art/Monitors (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_MonitorsEggRobo, "Objects/Main/Monitor/KosinskiPM Art/Egg Robo.kospm"
-		incfile.b	ArtKosPM_SpikesSprings, "Objects/Main/Spikes/KosinskiPM Art/SpikesSprings.kospm"
+	if Sonic1Spikes=0
+		incfile.b	ArtKosPM_Spikes, "Objects/Main/Spikes/KosinskiPM Art/Spikes.kospm"
+	elseif
+		incfile.b	ArtKosPM_Spikes, "Objects/Main/Spikes/KosinskiPM Art/Spikes (Sonic 1).kospm"
+	endif
+	if Sonic1Spring=0
+		incfile.b	ArtKosPM_Spring, "Objects/Main/Spring/KosinskiPM Art/Spring.kospm"
+	else
+		incfile.b	ArtKosPM_Spring, "Objects/Main/Spring/KosinskiPM Art/Spring (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_HiddenBonus, "Objects/Main/Hidden Bonus/KosinskiPM Art/Hidden Bonus.kospm"
+	if Sonic1Explosion=0
 		incfile.b	ArtKosPM_BossExplosion, "Objects/Main/Explosion/KosinskiPM Art/Boss Explosion.kospm"
 		incfile.b	ArtKosPM_Explosion, "Objects/Main/Explosion/KosinskiPM Art/Explosion.kospm"
-		incfile.b	ArtKosPM_EnemyPtsStarPost, "Objects/Main/StarPost/KosinskiPM Art/Enemy points.kospm"
+	elseif
+		incfile.b	ArtKosPM_BossExplosion, "Objects/Main/Explosion/KosinskiPM Art/Boss Explosion (Sonic 1).kospm"
+		incfile.b	ArtKosPM_Explosion, "Objects/Main/Explosion/KosinskiPM Art/Explosion (Sonic 1).kospm"
+	endif
+	if Sonic1EnemyPoints=0
+		incfile.b	ArtKosPM_EnemyPoints, "Objects/Main/Enemy Points/KosinskiPM Art/Enemy Points.kospm"	
+	elseif Sonic1Palette=0
+		incfile.b	ArtKosPM_EnemyPoints, "Objects/Main/Enemy Points/KosinskiPM Art/Enemy Points (Sonic 1) S3 Palette.kospm"
+	else
+		incfile.b	ArtKosPM_EnemyPoints, "Objects/Main/Enemy Points/KosinskiPM Art/Enemy Points (Sonic 1).kospm"
+	endif
+	if Sonic1StarPost=0
+		incfile.b	ArtKosPM_StarPost, "Objects/Main/StarPost/KosinskiPM Art/StarPost.kospm"
+	elseif Sonic1Palette=0
+		incfile.b	ArtKosPM_StarPost, "Objects/Main/StarPost/KosinskiPM Art/StarPost (Sonic 1) S3 Palette.kospm"
+	else
+		incfile.b	ArtKosPM_StarPost, "Objects/Main/StarPost/KosinskiPM Art/StarPost (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_GrayButton, "Objects/Main/Button/KosinskiPM Art/Gray Button.kospm"
 		incfile.b	ArtKosPM_MZGrayButton, "Objects/Main/Button/KosinskiPM Art/MZ Gray Button.kospm"
 		incfile.b	ArtKosPM_DiagonalSpring, "Objects/Main/Spring/KosinskiPM Art/Diagonal Spring.kospm"
@@ -33,6 +84,8 @@
 		incfile.b	ArtKosPM_WaveSplash, "Objects/Main/Wave Splash/KosinskiPM Art/Wave Splash.kospm"
 		incfile.b	ArtKosPM_WaveSplashLZ, "Objects/Main/Wave Splash/KosinskiPM Art/Wave Splash(LZ).kospm"
 		incfile.b	ArtKosPM_EggCapsule, "Objects/Main/Egg Capsule/KosinskiPM Art/Egg Capsule.kospm"
+
+	if Sonic1Animals=0
 		incfile.b	ArtKosPM_Seal, "Objects/Main/Animals/KosinskiPM Art/Seal.kospm"
 		incfile.b	ArtKosPM_Pig, "Objects/Main/Animals/KosinskiPM Art/Pig.kospm"
 		incfile.b	ArtKosPM_BlueFlicky, "Objects/Main/Animals/KosinskiPM Art/Blue Flicky.kospm"
@@ -40,7 +93,25 @@
 		incfile.b	ArtKosPM_Penguin, "Objects/Main/Animals/KosinskiPM Art/Penguin.kospm"
 		incfile.b	ArtKosPM_Squirrel, "Objects/Main/Animals/KosinskiPM Art/Squirrel.kospm"
 		incfile.b	ArtKosPM_Rabbit, "Objects/Main/Animals/KosinskiPM Art/Rabbit.kospm"
+	else
+		incfile.b	ArtKosPM_Seal, "Objects/Main/Animals/KosinskiPM Art/Seal (Sonic 1).kospm"
+		incfile.b	ArtKosPM_Pig, "Objects/Main/Animals/KosinskiPM Art/Pig (Sonic 1).kospm"
+		if Sonic1Palette=0
+			incfile.b	ArtKosPM_BlueFlicky, "Objects/Main/Animals/KosinskiPM Art/Blue Flicky (Sonic 1) S3 Palette.kospm"
+		else
+			incfile.b	ArtKosPM_BlueFlicky, "Objects/Main/Animals/KosinskiPM Art/Blue Flicky (Sonic 1).kospm"
+		endif
+		incfile.b	ArtKosPM_Chicken, "Objects/Main/Animals/KosinskiPM Art/Chicken (Sonic 1).kospm"
+		incfile.b	ArtKosPM_Penguin, "Objects/Main/Animals/KosinskiPM Art/Penguin (Sonic 1).kospm"
+		incfile.b	ArtKosPM_Squirrel, "Objects/Main/Animals/KosinskiPM Art/Squirrel (Sonic 1).kospm"
+		incfile.b	ArtKosPM_Rabbit, "Objects/Main/Animals/KosinskiPM Art/Rabbit (Sonic 1).kospm"
+	endif
+
+	if Sonic1HUD=0
 		incfile.b	ArtKosPM_ResultsGeneral, "Objects/Main/Results/KosinskiPM Art/General.kospm"
+	else
+		incfile.b	ArtKosPM_ResultsGeneral, "Objects/Main/Results/KosinskiPM Art/General (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_ResultsSONIC, "Objects/Main/Results/KosinskiPM Art/SONIC.kospm"
 		incfile.b	ArtKosPM_ResultsMILES, "Objects/Main/Results/KosinskiPM Art/MILES.kospm"
 		incfile.b	ArtKosPM_ResultsTAILS, "Objects/Main/Results/KosinskiPM Art/TAILS.kospm"

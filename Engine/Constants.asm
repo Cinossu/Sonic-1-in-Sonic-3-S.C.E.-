@@ -733,11 +733,17 @@ WindTunnel_holding_flag.player_2 =				1
 ; ---------------------------------------------------------------------------
 
 ArtTile_VRAM_Start =						0
-ArtTile_SpikesSprings =						$484
+ArtTile_Spikes =						$484
+        if Sonic1Spikes=0
+ArtTile_Spring =						$494
+        else
+ArtTile_Spring =						$48C
+        endif
 ArtTile_Monitors =						$4AC
 ArtTile_CutsceneKnuckles =					$4DA
 ArtTile_Explosion =						$5A0
-ArtTile_StarPost =						$5E4
+ArtTile_EnemyPoints =                                            $5E4
+ArtTile_StarPost =						$5EC
 ArtTile_Player_1 =						$680
 ArtTile_Player_2 =						$6A0
 ArtTile_Player_2_Tail =						$6B0
@@ -747,6 +753,7 @@ ArtTile_HUD =							$6C4
 ArtTile_Shield =						$79C
 ArtTile_Shield_Sparks =						ArtTile_Shield+$1F
 ArtTile_LifeIcon =						$7D4
+ArtTile_LifeName =						$7D8
 ArtTile_DashDust =						$7E0
 ArtTile_DashDust_P2 =						$7F0
 
@@ -775,7 +782,7 @@ screen_height =							224
 ; ---------------------------------------------------------------------------
 
 VRAM_Plane_A_Name_Table =					$C000						; extends until $CFFF
-VRAM_Plane_W_Name_Table =					VRAM_Plane_A_Name_Table				; extends until $CFFF
+VRAM_Plane_W_Name_Table =					$D000				                ; extends until $DFFF
 VRAM_Plane_B_Name_Table =					$E000						; extends until $EFFF
 VRAM_Tile_Size =						8*8/2						; 8x8 size
 VRAM_Plane_Table_Size =						(512/8)*(256/8)*2				; 64 cells x 32 cells x 2 bytes per cell

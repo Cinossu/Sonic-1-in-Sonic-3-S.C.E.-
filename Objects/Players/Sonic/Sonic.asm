@@ -1329,6 +1329,12 @@ Player_LevelBound:
 		bgt.s	Player_Boundary_Sides						; if yes, branch
 		move.w	(Camera_max_X_pos).w,d0
 		addi.w	#320-24,d0
+	if SignpostGroundSpin=1
+		tst.b	(Signpost_loaded_flag).w
+		beq.s	.notlocked
+		addi.w	#64,d0
+.notlocked
+	endif
 		cmp.w	d1,d0
 		blt.s	Player_Boundary_Sides
 
@@ -2950,7 +2956,13 @@ loc_1270A:
 .sani		:= SonAni_Walk-SonAni_Run						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
 
 		lea	(.sani)(a1),a1							; use walking animation
+	if Sonic1Sonic=0
 		add.b	d0,d0
+	else
+		move.b	d0,d1
+		lsr.b	#1,d1
+		add.b	d1,d0
+	endif
 
 loc_12724:
 		add.b	d0,d0

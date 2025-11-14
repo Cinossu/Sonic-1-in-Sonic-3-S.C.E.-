@@ -93,10 +93,10 @@ Mus8A_Title_Screen_Loop00:
 
 ; DAC Data
 Mus8A_Title_Screen_DAC:
-	dc.b	nRst, $0C, dSnareS3, dSnareS3, dSnareS3, dKickS3, dSnareS3, dKickS3, dSnareS3, dKickS3, dSnareS3, dKickS3
-	dc.b	dSnareS3, dKickS3, dSnareS3, dKickS3, dSnareS3, dKickS3, dSnareS3, dKickS3, $06, nRst, $02, dSnareS3
-	dc.b	dSnareS3, dSnareS3, $09, dSnareS3, $03, dKickS3, $0C, dSnareS3, dKickS3, dSnareS3, dKickS3, $06
-	dc.b	dSnareS3, $12, dSnareS3, $0C, dKickS3
+	dc.b	nRst, $0C, dSnare, dSnare, dSnare, dKick, dSnare, dKick, dSnare, dKick, dSnare, dKick
+	dc.b	dSnare, dKick, dSnare, dKick, dSnare, dKick, dSnare, dKick, $06, nRst, $02, dSnare
+	dc.b	dSnare, dSnare, $09, dSnare, $03, dKick, $0C, dSnare, dKick, dSnare, dKick, $06
+	dc.b	dSnare, $12, dSnare, $0C, dKick
 
 ; PSG1 Data
 Mus8A_Title_Screen_PSG1:

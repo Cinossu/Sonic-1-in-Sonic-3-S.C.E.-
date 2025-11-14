@@ -51,8 +51,8 @@ Game_Program:
 		jsr	(SndDrvInit).w
 		bsr.s	Init_Controllers
 
-	ifdef __DEBUG__
 		move.w	#1,(Player_option).w						; set Sonic Alone player
+	ifdef __DEBUG__
 		move.b	#GameModeID_LevelSelectScreen,(Game_mode).w			; set screen mode to Level Select (SCE)
 	else
 		move.b	#GameModeID_SegaScreen,(Game_mode).w				; set screen mode to Sega

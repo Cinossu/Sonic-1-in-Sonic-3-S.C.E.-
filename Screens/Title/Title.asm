@@ -152,7 +152,7 @@ TitleScreen:
 		EniDecomp	MapEni_TitleFG, RAM_start, $200, 0, FALSE		; decompress Enigma mappings
 		copyTilemap	(VRAM_Plane_A_Name_Table+$208), 272, 176
 
-		; load ©1991 text
+		; load Â©1991 text
 		lea	Title_CopyrightText(pc),a1
 		locVRAM	(VRAM_Plane_A_Name_Table+$D38),d1
 		move.w	#$250F,d3
@@ -177,8 +177,10 @@ TitleScreen:
 .askip
 
 		; set
-		move.l	#Obj_TitleSonic,(Player_2+address).w				; load big Sonic object
-		move.l	#Obj_TitlePSB,(Reserved_object_3+address).w			; load "PRESS START BUTTON" object
+		move.l	#Obj_TitleSonic,(Player_2+address).w						; load big Sonic object
+	if TitleScreenNoMenu=0
+		move.l	#Obj_TitlePSB,(Reserved_object_3+address).w					; load "PRESS START BUTTON" object
+	endif
 
 		; check console region
 		tst.b	(Graphics_flags).w
@@ -226,10 +228,12 @@ TitleScreen:
 		; check exit
 		tst.w	(Demo_timer).w
 		beq.w	.demo
+	if TitleScreenNoMenu=0
 		tst.b	(Title_end).w
 		beq.s	.notexit
-		tst.b	(Ctrl_1_pressed).w						; is Start pressed?
-		bmi.s	.exit								; if yes, branch
+	endif
+		tst.b	(Ctrl_1_pressed).w								; is Start pressed?
+		bmi.s	.exit										; if yes, branch
 
 .notexit
 		bsr.w	Title_Code
@@ -438,7 +442,7 @@ Obj_TitleSonic:
 ; ---------------------------------------------------------------------------
 ; Object 0F - "PRESS START BUTTON" from title screen
 ; ---------------------------------------------------------------------------
-
+	if TitleScreenNoMenu=0
 ; Dynamic object variables
 tpsb_timer		= objoff_2E	; .w
 
@@ -493,6 +497,8 @@ Obj_TitlePSB:
 		move.w	d0,(a1)								; set FG line pos
 
 		; next
+		st	(Title_end).w
+		rts
 		sfx	sfx_StarPost
 		move.w	#(1<<4)-1,tpsb_timer(a0)					; set wait
 		move.l	#.woptions,address(a0)
@@ -575,7 +581,7 @@ Title_DrawVIcon:
 		; exit
 		enableIntsSave
 		rts
-
+	endif
 ; ---------------------------------------------------------------------------
 ; Level Select code
 ; ---------------------------------------------------------------------------

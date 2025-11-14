@@ -224,7 +224,12 @@ Deform_lock:						ds.b 1
 Boss_flag:						ds.b 1				; set if a boss fight is going on
 Level_results_flag:					ds.b 1
 End_of_level_flag:					ds.b 1
-Special_events_addr:					ds.l 1				; jump for special events
+Signpost_loaded_flag:					ds.b 1
+Unk_set:						ds.b 5
+Debugger_Chk1:						ds.w 1
+Debugger_Chk2:						ds.w 2
+
+Special_events_addr:					ds.l 1						; jump for special events
 NoBackground_event_flag:				ds.b 1
 Screen_event_routine:					ds.b 1
 Screen_event_flag:					ds.b 1

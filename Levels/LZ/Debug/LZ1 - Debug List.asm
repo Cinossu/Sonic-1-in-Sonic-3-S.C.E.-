@@ -17,20 +17,20 @@ Debug_LZ1: dbglistheader
 	dbglistobj Obj_Monitor, Map_Monitor, 9, $A, ArtTile_Monitors, 0, FALSE
 	dbglistobj Obj_PathSwap, Map_PathSwap, 9, 1, ArtTile_Ring, 1, FALSE
 	dbglistobj Obj_PathSwap, Map_PathSwap, $D, 5, ArtTile_Ring, 1, FALSE
-	dbglistobj Obj_Spring, Map_Spring, 1, 0, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring, $81, 0, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, 2, 0, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, $82, 0, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring, $10, 3, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring, $90, 3, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, $12, 3, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, $92, 3, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring, $20, 6, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring, $A0, 6, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, $22, 6, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spring, Map_Spring2, $A2, 6, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spikes, Map_Spikes, 0, 0, ArtTile_SpikesSprings, 0, FALSE
-	dbglistobj Obj_Spikes, Map_Spikes, $10, 1, ArtTile_SpikesSprings, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, 1, 0, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, $81, 0, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, 2, 0, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, $82, 0, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, $10, 3, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, $90, 3, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, $12, 3, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, $92, 3, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, $20, 6, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring, $A0, 6, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, $22, 6, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spring, Map_Spring2, $A2, 6, ArtTile_Spring, 0, FALSE
+	dbglistobj Obj_Spikes, Map_Spikes, 0, 0, ArtTile_Spikes, 0, FALSE
+	dbglistobj Obj_Spikes, Map_Spikes, $10, 1, ArtTile_Spikes, 0, FALSE
 	dbglistobj Obj_Jaws, Map_Jaws, 8, 0, $4F0, 1, FALSE
 	dbglistobj Obj_Burrobot, Map_Burro, 0, 2, $510, 0, FALSE
 	dbglistobj Obj_Animal, Map_Animals4, 0, 2, $592, 0, FALSE

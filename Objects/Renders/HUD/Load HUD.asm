@@ -8,6 +8,11 @@ Render_HUD:
 		lea	(HUD_RAM).w,a1
 		move.b	HUD_RAM.status-HUD_RAM(a1),d0
 		beq.s	.return								; if 0, branch
+	if HUDNoScroll=1
+.init
+		move.w	#$80+16,HUD_RAM.xpos-HUD_RAM(a1)
+		move.w	#$80+$80+8,HUD_RAM.ypos-HUD_RAM(a1)
+	else
 		bmi.s	.left								; if -1, branch
 		cmpi.b	#3,d0
 		beq.s	.check								; if 3, branch
@@ -24,7 +29,6 @@ Render_HUD:
 		cmpi.w	#$80+16,HUD_RAM.xpos-HUD_RAM(a1)
 		bne.s	.check
 		addq.b	#1,HUD_RAM.status-HUD_RAM(a1)					; set 3
-
 .check
 		tst.b	(Level_results_flag).w
 		beq.s	.process
@@ -35,7 +39,7 @@ Render_HUD:
 		cmpi.w	#16,HUD_RAM.xpos-HUD_RAM(a1)
 		bhs.s	.process
 		clr.b	HUD_RAM.status-HUD_RAM(a1)
-
+	endif
 .process
 		moveq	#0,d4								; frame #0
 		btst	#3,(Level_frame_counter+1).w
@@ -66,4 +70,8 @@ Render_HUD:
 ; ---------------------------------------------------------------------------
 
 		; mappings
+	if Sonic1HUD=0
 		include "Objects/Renders/HUD/Object Data/Map - HUD.asm"
+	else
+		include "Objects/Renders/HUD/Object Data/Map - HUD (Sonic 1).asm"
+	endif

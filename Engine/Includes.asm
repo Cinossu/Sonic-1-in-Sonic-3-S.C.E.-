@@ -387,10 +387,17 @@
 ; ---------------------------------------------------------------------------
 
 		; Sonic
+	if Sonic1Sonic=0
 		include "Objects/Players/Sonic/Object Data/Anim - Sonic.asm"
 		include "Objects/Players/Sonic/Object Data/Anim - Super Sonic.asm"
 		include "Objects/Players/Sonic/Object Data/Map - Sonic.asm"
 		include "Objects/Players/Sonic/Object Data/DPLC - Sonic.asm"
+	else
+		include "Objects/Players/Sonic/Object Data/Map - Sonic (Sonic 1).asm"
+		include "Objects/Players/Sonic/Object Data/DPLC - Sonic (Sonic 1).asm"
+		include "Objects/Players/Sonic/Object Data/Anim - Sonic (Sonic 1).asm"
+		include "Objects/Players/Sonic/Object Data/Anim - Super Sonic (Sonic 1).asm"
+	endif
 
 		; Tails
 		include "Objects/Players/Tails/Object Data/Anim - Tails.asm"

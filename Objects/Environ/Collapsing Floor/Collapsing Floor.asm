@@ -96,11 +96,13 @@ CollapseFloor_PlayerRelease:
 		bset	#status.player.in_air,status(a1)
 
 		; set anim
+	if NoFallingAnimation=0
 		tst.b	spin_dash_flag(a1)
 		bne.s	.return
 		cmpi.b	#AniIDSonAni_Roll,anim(a1)					; is player in his rolling animation?
 		beq.s	.return								; if so, branch
 		move.b	#AniIDSonAni_Hurt,anim(a1)					; set falling animation
+	endif
 
 .return
 		rts

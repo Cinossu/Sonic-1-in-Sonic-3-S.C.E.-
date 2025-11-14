@@ -3,8 +3,11 @@
 ; ===========================================================================
 
 ;		Attribute	| Filename	| Folder
-
+	if Sonic1Palette=0
 		incfile.be	Pal_Sonic, "Objects/Players/Sonic/Palettes/Sonic.pal"
+	else
+		incfile.be	Pal_Sonic, "Objects/Players/Sonic/Palettes/Sonic (Sonic 1).pal"
+	endif
 		incfile.be	Pal_WaterSonic, "Objects/Players/Sonic/Palettes/Water Sonic.pal"
 		incfile.be	Pal_WaterSonicLZ, "Objects/Players/Sonic/Palettes/Water Sonic(LZ).pal"
 		incfile.be	Pal_WaterSonicSBZ, "Objects/Players/Sonic/Palettes/Water Sonic(SBZ).pal"
@@ -69,8 +72,11 @@
 ; ===========================================================================
 
 ;		Attribute	| Filename	| Folder
-
+	if Sonic1Palette=0
 		incfile.be	Pal_GHZ, "Levels/GHZ/Palettes/Green Hill Zone.pal"
+	else
+		incfile.be	Pal_GHZ, "Levels/GHZ/Palettes/Green Hill Zone (Sonic 1).pal"
+	endif
 		incfile.be	Pal_WaterGHZ, "Levels/GHZ/Palettes/Water Green Hill Zone.pal"
 		incfile.be	Pal_MZ, "Levels/MZ/Palettes/Marble Zone.pal"
 		incfile.be	Pal_WaterMZ, "Levels/MZ/Palettes/Water Marble Zone.pal"

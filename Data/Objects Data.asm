@@ -27,6 +27,7 @@
 		include "Objects/Main/Results/Results.asm"
 		include "Objects/Main/Explosion/Boss Explosion.asm"
 		include "Objects/Main/Explosion/Explosion.asm"
+		include "Objects/Main/Enemy Points/Enemy Points.asm"
 		include "Objects/Main/Bubbler/Bubbler.asm"
 		include "Objects/Main/Count Down/Count Down.asm"
 		include "Objects/Main/Wave Splash/Wave Splash.asm"

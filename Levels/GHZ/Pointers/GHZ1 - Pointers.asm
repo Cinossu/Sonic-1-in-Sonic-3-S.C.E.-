@@ -61,7 +61,7 @@
 		dc.l PLCAnimals_GHZ1							; PLC animals
 
 		; Level size
-		dc.w $100								; Level xstart
+		dc.w $200								; Level xstart
 		dc.w $26BF								; Level xend
 		dc.w 0									; Level ystart
 		dc.w $300								; Level yend

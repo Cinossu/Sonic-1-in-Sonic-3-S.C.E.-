@@ -6,7 +6,7 @@ VDP_register_values:
 		dc.w $8004								; H-int disabled
 		dc.w $8134								; V-int enabled, display blanked, DMA enabled, 224 line display
 		dc.w $8200+(VRAM_Plane_A_Name_Table>>10)				; scroll A PNT base $C000
-		dc.w $8300+(VRAM_Plane_W_Name_Table>>10)				; window PNT base $C000
+		dc.w $8300+(VRAM_Plane_W_Name_Table>>10)				; window PNT base $D000
 		dc.w $8400+(VRAM_Plane_B_Name_Table>>13)				; scroll B PNT base $E000
 		dc.w $8500+(VRAM_Sprite_Attribute_Table>>9)				; sprite attribute table base $D400
 		dc.w $8600								; sprite Pattern Generator Base Address: low 64KB VRAM

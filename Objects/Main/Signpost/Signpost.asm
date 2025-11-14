@@ -57,6 +57,9 @@ sign_dplcframe			= objoff_3A	; .b
 sign_rosbit			= objoff_3B	; .b
 sign_rosaddr			= objoff_3C	; .w
 
+sign_sparkletimer		= objoff_3E	; .b
+sign_sparklepos			= objoff_3F	; .b
+
 ; =============== S U B R O U T I N E =======================================
 
 Obj_EndSign:
@@ -85,6 +88,7 @@ Obj_EndSign:
 
 .notKnux
 		move.l	d0,objoff_30(a0)
+		st	(Signpost_loaded_flag).w
 
 		; create stub
 		lea	Child1_EndSignStub(pc),a2					; make the little stub at the bottom of the signpost
@@ -108,6 +112,7 @@ Obj_EndSign:
 		tst.w	(Debug_placement_mode).w					; is debug mode on?
 		bne.w	.draw								; if yes, branch
 
+	if SignpostGroundSpin=0
 		; check player ypos
 		move.w	(Player_1+y_pos).w,d0
 		sub.w	y_pos(a0),d0
@@ -115,6 +120,7 @@ Obj_EndSign:
 		moveq	#24,d1								; set range
 		cmp.w	d1,d0
 		bhs.w	.draw
+	endif
 
 		; check player xpos
 		move.w	(Player_1+x_pos).w,d0
@@ -126,7 +132,9 @@ Obj_EndSign:
 		; bounce
 		sfx	sfx_SignpostRotation
 		st	objoff_39(a0)
+	if SignpostGroundSpin=0
 		move.w	#-$380,y_vel(a0)
+	endif
 		move.l	#.bounce,address(a0)
 
 .bounce
@@ -149,6 +157,8 @@ Obj_EndSign:
 .signfall
 		bsr.w	EndSign_CheckPlayerHit
 
+; ---------------------------------------------------------------------------
+	if SignpostGroundSpin=0
 .sparkle
 		moveq	#3,d0
 		and.b	(V_int_run_count+3).w,d0
@@ -173,13 +183,10 @@ Obj_EndSign:
 		move.l	#.signlanded,address(a0)
 		bset	#0,objoff_38(a0)
 		move.w	#(1*60)+4,objoff_2E(a0)
-
 .draw
 		lea	PLCPtr_EndSigns(pc),a2
 		jsr	(Perform_DPLC).w
 		jmp	(Draw_Sprite).w
-; ---------------------------------------------------------------------------
-
 .signlanded
 		btst	#0,objoff_38(a0)
 		beq.s	.hmon
@@ -188,6 +195,51 @@ Obj_EndSign:
 		bmi.s	.endtime
 		bra.s	.draw
 ; ---------------------------------------------------------------------------
+	else
+		move.l	#.sparkle,address(a0)
+		bset	#0,objoff_38(a0)
+		move.w	#(2*60)+4,objoff_2E(a0)
+.sparkle
+		subq.b	#1,sign_sparkletimer(a0)
+		bpl.s	.skip
+		move.b	#$B,sign_sparkletimer(a0)
+		lea	Child6_EndSignSparkle(pc),a2					; create a signpost sparkle every 12 frames
+		jsr	(CreateChild6_Simple).w
+		moveq	#0,d0
+		move.b	sign_sparklepos(a0),d0						; get sparkle id
+		addq.b	#4,sign_sparklepos(a0)						; increment sparkle counter
+		andi.b	#$1C,sign_sparklepos(a0)
+		lea	.sparkle_position_list(pc,d0.w),a2				; load sparkle position data
+		move.w	(a2)+,d0
+		add.w	x_pos(a0),d0
+		move.w	d0,x_pos(a1)
+		move.w	(a2)+,d0
+		add.w	y_pos(a0),d0
+		move.w	d0,y_pos(a1)
+
+.skip
+		btst	#0,objoff_38(a0)
+		beq.s	.draw
+		jsr	(Animate_Raw).w
+		subq.w	#1,objoff_2E(a0)						; keep animating while landing for X amount of frames
+		bmi.s	.endtime
+.draw
+		lea	PLCPtr_EndSigns(pc),a2
+		jsr	(Perform_DPLC).w
+		jmp	(Draw_Sprite).w	
+
+.sparkle_position_list
+		;	xoff	yoff
+		dc.w	-$18,	-$10
+		dc.w	   8,	   8
+		dc.w	-$10,	   0
+		dc.w 	 $18,	  -8
+		dc.w	   0,	  -8
+		dc.w 	 $10,	   0
+		dc.w	-$18,	   8
+		dc.w 	 $18,	 $10
+; ---------------------------------------------------------------------------
+	endif
 
 .endtime
 		move.l	#.signresults,address(a0)
@@ -206,7 +258,7 @@ Obj_EndSign:
 		bra.s	.draw
 ; ---------------------------------------------------------------------------
 
-.framearray	dc.b 0, 0, 1, 2, 2
+.framearray	dc.b	0, 0, 1, 2, 2
 	even
 ; ---------------------------------------------------------------------------
 
@@ -214,9 +266,20 @@ Obj_EndSign:
 		lea	(Player_1).w,a1							; a1=character
 		btst	#status.player.in_air,status(a1)
 		bne.s	.draw2								; if player is not standing on the ground, wait until he is
-		move.l	#.signafter,address(a0)
 		st	(Ctrl_1_locked).w						; null Sonic's input
+	if SignpostGroundSpin=0
 		jsr	(Set_PlayerEndingPose).w
+	else
+		move.l	#.signcheck,address(a0)
+		move.w	#btnR<<8,(Ctrl_1_Held_Logical).w
+.signcheck
+		move.w	(Player_1+x_pos).w,d0
+		move.w	(Camera_max_X_pos).w,d1
+		add.w	#320-24,d1
+		cmp.w	d1,d0
+		bcs.s	.draw2
+	endif
+		move.l	#.signafter,address(a0)
 		jsr	(Create_New_Sprite).w
 		bne.s	.draw2
 		move.l	#Obj_LevelResults,address(a1)
@@ -275,16 +338,18 @@ Obj_SignpostSparkle:
 
 .nothighpriority
 		move.l	#.main,address(a0)
+		move.w	#32,objoff_2E(a0)
+		move.l	#Go_Delete_Sprite,objoff_34(a0)
+	if SignpostGroundSpin=0
 		jsr	(Random_Number).w
 		andi.w	#$1F,d0
 		subi.w	#$10,d0
 		add.w	d0,y_pos(a0)							; random vertical position
 		move.w	x_pos(a0),objoff_3A(a0)
 		move.w	#$1000,x_vel(a0)
-		move.w	#32,objoff_2E(a0)
-		move.l	#Go_Delete_Sprite,objoff_34(a0)
-
+	endif
 .main
+	if SignpostGroundSpin=0
 		move.w	#$400,d0							; right
 		move.w	x_pos(a0),d1
 		cmp.w	objoff_3A(a0),d1
@@ -300,6 +365,7 @@ Obj_SignpostSparkle:
 .priority
 		move.w	d1,priority(a0)							; set priority
 		jsr	(MoveSprite2).w
+	endif
 		lea	AniRaw_SignpostSparkle(pc),a1
 		jsr	(Animate_RawNoSST).w
 		jsr	(Obj_Wait).w
@@ -444,11 +510,15 @@ Child6_EndSignSparkle:
 		dc.l Obj_SignpostSparkle
 Child6_EndSignScore:
 		dc.w 1-1
-		dc.l Obj_EnemyScore
+		dc.l Obj_EnemyPoints
 
 AniRaw_EndSigns1:		dc.b 1, 0, 5, 6, 7, 1, 5, 6, 7, 3, 5, 6, 7, arfEnd	; Sonic
 AniRaw_EndSigns2:		dc.b 1, 1, 5, 6, 7, 2, 5, 6, 7, 4, 5, 6, 7, arfEnd	; Knuckles
+	if SignpostGroundSpin=0
 AniRaw_SignpostSparkle:		dc.b 1, 1, 2, 3, 4, arfEnd
+	else
+AniRaw_SignpostSparkle:		dc.b 5, 1, 2, 3, 4, arfEnd	
+	endif
 	even
 ; ---------------------------------------------------------------------------
 

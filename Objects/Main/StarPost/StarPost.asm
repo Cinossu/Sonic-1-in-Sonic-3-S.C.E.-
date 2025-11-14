@@ -82,14 +82,16 @@ Obj_StarPost:
 
 		; move circle
 		move.w	#34,objoff_36(a0)						; rotation time
-
+	if Sonic1StarPost=1
+		move.b	#2,sub2_mapframe(a0)
+	else
 		; check bonus
 		cmpi.b	#ChaosEmeralds_Count,(Chaos_emerald_count).w			; do you have all the emeralds?
 		beq.s	.notbonus							; if yes, branch
 		cmpi.w	#50,(Ring_count).w						; does Sonic have at least 50 rings?
 		blo.s	.notbonus							; if not, branch
 		bsr.w	Load_StarPost_Stars						; load stars
-
+	endif
 .notbonus
 		bsr.s	Save_StarPost_Settings
 		move.l	#.circular,address(a0)
@@ -114,15 +116,17 @@ Obj_StarPost:
 		subq.w	#1,objoff_36(a0)
 		bne.s	.cmove
 		move.l	#.canim,address(a0)
-
 .canim
+	if Sonic1StarPost=0
 		moveq	#1,d0
 		btst	#2,(Level_frame_counter+1).w
 		beq.s	.cdraw
 		moveq	#2,d0
-
 .cdraw
 		move.b	d0,sub2_mapframe(a0)
+	else
+		move.b	#2,sub2_mapframe(a0)
+	endif
 		jmp	(Sprite_CheckDelete).w
 ; ---------------------------------------------------------------------------
 
@@ -292,7 +296,7 @@ Load_StarPost_Stars:
 .create
 		move.l	#Obj_StarPost_Stars,address(a1)
 		move.l	#Map_StarPostStars,mappings(a1)
-		move.w	#make_art_tile(ArtTile_StarPost+8,0,FALSE),art_tile(a1)
+		move.w	#make_art_tile(ArtTile_StarPost,0,FALSE),art_tile(a1)
 		move.b	#setBit(render_flags.level),render_flags(a1)			; use screen coordinates
 		move.w	priority(a0),priority(a1)
 		move.w	#bytes_to_word(16/2,16/2),height_pixels(a1)			; set height and width
@@ -478,6 +482,9 @@ ObjDat_StarPost:	subObjMainData \
 ; ---------------------------------------------------------------------------
 
 		; mappings
+	if Sonic1StarPost=0
 		include "Objects/Main/StarPost/Object Data/Map - StarPost.asm"
+	else
+		include "Objects/Main/StarPost/Object Data/Map - StarPost (Sonic 1).asm"
+	endif
 		include "Objects/Main/StarPost/Object Data/Map - StarPost Stars.asm"
-		include "Objects/Main/StarPost/Object Data/Map - Enemy Points.asm"

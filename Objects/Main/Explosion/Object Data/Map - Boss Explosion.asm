@@ -3,6 +3,7 @@
 ; ---------------------------------------------------------------------------
 
 Map_BossExplosion:
+Map_BossExplosion2:
 		dc.w word_84008-Map_BossExplosion
 		dc.w word_84010-Map_BossExplosion
 		dc.w word_84018-Map_BossExplosion

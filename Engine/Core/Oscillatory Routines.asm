@@ -20,14 +20,22 @@ ChangeRingFrame:
 		; used for rings and giant rings
 		subq.b	#1,(Rings_frame_timer).w
 		bpl.s	.syncrings2
-		addq.b	#4+1,(Rings_frame_timer).w
 		addq.b	#1,(Rings_frame).w
+	if Rings4Frame=0
 		andi.b	#7,(Rings_frame).w
-
+		addq.b	#4+1,(Rings_frame_timer).w
+	else
+		andi.b	#3,(Rings_frame).w
+		addq.b	#8,(Rings_frame_timer).w
+	endif
 		; dynamic ring graphics
 		moveq	#0,d1
 		move.b	(Rings_frame).w,d1
+	if Rings4Frame=0
 		lsl.w	#6,d1								; multiply by $40
+	else
+		lsl.w	#7,d1								; multiply by $80
+	endif
 		addi.l	#dmaSource(ArtUnc_Ring),d1					; get next frame
 		move.w	#tiles_to_bytes(ArtTile_Ring),d2				; load art destination
 
