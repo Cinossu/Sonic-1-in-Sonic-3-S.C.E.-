@@ -1807,5 +1807,5 @@ optstr macro str
 	charset '0',"\0\2\4\6\8\xA\xC\xE\x10\x12"
 	charset '*',$14
 	charset ':',$16
-	charset 'E',$18
+	charset ';',$18
 	restore

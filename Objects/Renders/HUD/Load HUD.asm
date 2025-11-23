@@ -70,8 +70,4 @@ Render_HUD:
 ; ---------------------------------------------------------------------------
 
 		; mappings
-	if Sonic1HUD=0
 		include "Objects/Renders/HUD/Object Data/Map - HUD.asm"
-	else
-		include "Objects/Renders/HUD/Object Data/Map - HUD (Sonic 1).asm"
-	endif

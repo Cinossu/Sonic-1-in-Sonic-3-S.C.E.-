@@ -158,7 +158,7 @@ MS_Walk22:	dc.w 6			; walking 2-2
 		dc.b $FC, $C, 0, 8, $FF, $EC
 		dc.b 4, 9, 0, $C, $FF, $F4
 		dc.b $FC, 5, 0, $12, 0, $C
-		dc.b $F4, 0, 0, $16, $FF, $14
+		dc.b $F4, 0, 0, $16, 0, $14
 MS_Walk23:	dc.w 4			; walking 2-3
 		dc.b $ED, 9, 0, 0, $FF, $ED
 		dc.b $ED, 1, 0, 6, 0, 5

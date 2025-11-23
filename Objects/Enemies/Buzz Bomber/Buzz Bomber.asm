@@ -131,7 +131,9 @@ Obj_Missile:
 		move.l	#.frombuzz,address(a0)
 		tst.b	subtype(a0)							; was object created by	a Newtron?
 		beq.s	.animatebuzz							; if not, branch
+	if NoProjectileSFX=0
 		sfx	sfx_Projectile
+	endif
 		move.b	#1,anim(a0)
 		move.l	#.move,address(a0)
 		bra.s	.move
@@ -145,7 +147,9 @@ Obj_Missile:
 		tst.b	routine(a0)
 		beq.s	.animatebuzz_child
 		clr.b	routine(a0)
+	if NoProjectileSFX=0
 		sfx	sfx_Projectile
+	endif
 		move.b	#1,anim(a0)
 		move.l	#.move,address(a0)
 		bra.s	.animatebuzz

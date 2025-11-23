@@ -30,12 +30,14 @@ AddressSRAM:				= 0	; 0 = odd+even, 2 = even only, 3 = odd only
 ; Extra options (Sonic 1-esque, but not necessarily Sonic 1 only)
 SEGAScreenNoFade:                       = 1     ; if 1, the SEGA screen shows immediately and doesn't fade in
 TitleScreenNoMenu:                      = 1     ; if 1, the title screen has no menu and goes straight into the beginning of the game
-Rings4Frame:                            = 1     ; if 1, rings revert to their 4-frame versions
+Rings4Frame:                            = 0     ; if 1, rings revert to their 4-frame versions
 HUDNoScroll:                            = 1     ; if 1, no HUD scrolling movement on level start/finish
+HUDNoCentiseconds:                      = 1     ; if 1, disables centiseconds in the HUD
 NoElementalShields:                     = 1     ; if 1, elemental shields are all replaced with the blue shield (mappings too)
 NoShieldProjectileBouncing:             = 1     ; if 1, disables projectiles being rebound from the blue shield, if 2 disables projectiles being rebound from all shields
 SignpostGroundSpin:                     = 1     ; if 1, signposts use Sonic 1/2's logic and spin on the ground only, including running to the right of the screen
 NoFallingAnimation:                     = 1     ; if 1, falling animation triggers like collapsing platforms will be ignored
+NoProjectileSFX:                        = 1     ; if 1, disables additional projectile sound effects added to Sonic 3-ify badniks
 
 ; Sonic 1 style options
 Sonic1Palette:                          = 1     ; if 1, Sonic's palette becomes a "Sonic 1" palette, with a yellow and lighter blue in the place of oranges

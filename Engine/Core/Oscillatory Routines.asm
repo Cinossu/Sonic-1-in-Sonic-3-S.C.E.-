@@ -16,7 +16,6 @@ ChangeRingFrame:
 		andi.b	#7,(Spikes_frame).w
 
 .syncrings
-
 		; used for rings and giant rings
 		subq.b	#1,(Rings_frame_timer).w
 		bpl.s	.syncrings2
@@ -38,12 +37,7 @@ ChangeRingFrame:
 	endif
 		addi.l	#dmaSource(ArtUnc_Ring),d1					; get next frame
 		move.w	#tiles_to_bytes(ArtTile_Ring),d2				; load art destination
-
-		; size of art (in words) ; we only need one frame
-		moveq	#tiles_to_bytes( \
-		dmaLength(4) \
-		),d3
-
+		moveq	#tiles_to_bytes(dmaLength(4)),d3				; size of art (in words) ; we only need one frame
 		bsr.w	Add_To_DMA_Queue
 
 .syncrings2
@@ -55,10 +49,28 @@ ChangeRingFrame:
 		move.b	(Ring_spill_anim_counter).w,d0
 		add.w	(Ring_spill_anim_accum).w,d0
 		move.w	d0,(Ring_spill_anim_accum).w
+	if Rings4Frame=0
+		rol.w	#8,d0
+		andi.w	#7,d0
+	else
 		rol.w	#7,d0
 		andi.w	#3,d0
+	endif
 		move.b	d0,(Ring_spill_anim_frame).w
 		subq.b	#1,(Ring_spill_anim_counter).w
+
+		; dynamic ring graphics
+		moveq	#0,d1
+		move.b	(Ring_spill_anim_frame).w,d1
+	if Rings4Frame=0
+		lsl.w	#6,d1								; multiply by $40
+	else
+		lsl.w	#7,d1								; multiply by $80
+	endif
+		addi.l	#dmaSource(ArtUnc_Ring),d1					; get next frame
+		move.w	#tiles_to_bytes(ArtTile_Ring_Spill),d2				; load art destination
+		moveq	#tiles_to_bytes(dmaLength(4)),d3				; size of art (in words) ; we only need one frame
+		bsr.w	Add_To_DMA_Queue
 
 .syncend
 		addi.w	#$180,(AIZ_vine_angle).w

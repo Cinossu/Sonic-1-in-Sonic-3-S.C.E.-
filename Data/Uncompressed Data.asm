@@ -8,11 +8,10 @@
 	else
 		incfile.b	ArtUnc_Ring, "Objects/Main/Rings/Uncompressed Art/Rings (Sonic 1).unc"
 	endif
-	if Sonic1HUD=0
 		incfile.b	ArtUnc_HUDDigits, "Objects/Renders/HUD/Uncompressed Art/HUD Digits.unc"
+	if Sonic1HUD=0
 		incfile.b	ArtUnc_LivesDigits, "Objects/Renders/HUD/Uncompressed Art/Lives Digits.unc"
 	else
-		incfile.b	ArtUnc_HUDDigits, "Objects/Renders/HUD/Uncompressed Art/HUD Digits (Sonic 1).unc"
 		incfile.b	ArtUnc_LivesDigits, "Objects/Renders/HUD/Uncompressed Art/Lives Digits (Sonic 1).unc"
 	endif
 		incfile.b	ArtUnc_DebugDigits, "Objects/Renders/HUD/Uncompressed Art/Debug Digits.unc"

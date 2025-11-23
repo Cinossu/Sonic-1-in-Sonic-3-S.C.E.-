@@ -78,7 +78,9 @@ Obj_Crabmeat:
 		move.b	#6,anim(a0)							; use firing animation
 
 		; create
+	if NoProjectileSFX=0
 		sfx	sfx_Projectile
+	endif
 		lea	Child1_Crabmeat_Missile(pc),a2
 		jmp	(CreateChild1_Normal).w
 ; ---------------------------------------------------------------------------
