@@ -19,7 +19,9 @@ Obj_Electro:
 		; init
 		lea	ObjDat_Electro(pc),a1
 		jsr	(SetUp_ObjAttributes).w
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.lightning_shield,shield_reaction(a0)
+	endif
 		move.l	#.shock,address(a0)
 
 .shock

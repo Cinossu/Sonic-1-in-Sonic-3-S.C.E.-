@@ -182,7 +182,9 @@ Obj_Crabmeat_Missile:
 		; init
 		lea	ObjDat3_Crabmeat_Missile(pc),a1
 		jsr	(SetUp_ObjAttributes3).w
+	if NoShieldProjectileBouncing<1
 		bset	#shield_reaction.all_shields,shield_reaction(a0)		; bounce off all shields
+	endif
 		move.l	#.main,address(a0)
 
 		; set x_vel and y_vel

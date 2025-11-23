@@ -549,15 +549,7 @@ HurtCharacter:
 		clr.w	ground_vel(a0)
 
 		; set anim
-;		moveq	#AniIDSonAni_Hurt2,d0						; normal anim
-;		btst	#status_secondary.fire_shield,shield_reaction(a2)
-;		beq.s	.notfire
-;		moveq	#AniIDSonAni_HurtBW,d0						; fire anim
-
-;.notfire
-;		move.b	d0,anim(a0)							; set hurt anim
-
-		move.b	#AniIDSonAni_Hurt2,anim(a0)
+		move.b	#AniIDSonAni_Hurt,anim(a0)
 		move.b	#2*60,invulnerability_timer(a0)					; set temp invincible time to 2 seconds
 
 		; check
@@ -613,14 +605,6 @@ Kill_Character:
 		clr.w	ground_vel(a0)
 
 		; set anim
-;		moveq	#AniIDSonAni_Death,d1						; normal anim
-;		btst	#status_secondary.fire_shield,shield_reaction(a2)
-;		beq.s	.notfire
-;		moveq	#AniIDSonAni_DeathBW,d1						; fire anim
-
-;.notfire
-;		move.b	d1,anim(a0)							; set death anim
-
 		move.b	#AniIDSonAni_Death,anim(a0)
 		cmpa.w	#Player_1,a0							; is this the main character?
 		bne.s	.notp1								; if not, branch

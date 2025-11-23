@@ -363,7 +363,7 @@ HurtCharacter_WithoutDamage:
 		bset	#status.player.in_air,status(a1)
 		move.l	#words_to_long(-$200,-$300),x_vel(a1)				; set speed of player
 		clr.w	ground_vel(a1)							; zero out inertia
-		move.b	#AniIDSonAni_Hurt,anim(a1)					; set falling animation
+		move.b	#AniIDSonAni_Slide,anim(a1)					; set sliding/falling animation
 		sfx	sfx_Death,1							; play death sound
 
 ; =============== S U B R O U T I N E =======================================
@@ -470,7 +470,7 @@ Load_LevelResults:
 
 Set_PlayerEndingPose:
 		move.b	#$81,object_control(a1)
-		move.b	#AniIDSonAni_Landing,anim(a1)					; set landing animation
+		move.b	#AniIDSonAni_Victory,anim(a1)					; set victory animation
 		clr.l	x_vel(a1)
 		clr.w	ground_vel(a1)
 		clr.b	spin_dash_flag(a1)

@@ -14,7 +14,9 @@ Obj_GrassFire:
 		lea	ObjDat_GrassFire(pc),a1
 		jsr	(SetUp_ObjAttributes).w
 		sfx	sfx_Burning
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		move.w	x_pos(a0),gfire_origX(a0)
 		move.l	#.main,address(a0)
 

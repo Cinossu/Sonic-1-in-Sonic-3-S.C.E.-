@@ -28,7 +28,9 @@ Obj_Flamethrower:
 		; init
 		lea	ObjDat_Flamethrower(pc),a1
 		jsr	(SetUp_ObjAttributes).w
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		move.l	#.action,address(a0)
 		move.b	#10,flame_frame(a0)
 		btst	#status.npc.y_flip,status(a0)					; is flipy?

@@ -3442,13 +3442,13 @@ loc_159C8:
 		add.w	(Camera_H_scroll_shift).w,d2
 
 		; check
-		lea	(TailsAni_Roll2).l,a1						; use roll 2 animation
+		lea	(TailsAni_RollFast).l,a1					; use fast roll animation
 		cmpi.w	#$600,d2
 		bhs.s	loc_15A00
 
-.trani		:= TailsAni_Roll-TailsAni_Roll2						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
+.trani		:= TailsAni_Roll-TailsAni_RollFast					; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
 
-		lea	(.trani)(a1),a1							; use roll animation
+		lea	(.trani)(a1),a1							; use regular roll animation
 
 loc_15A00:
 		neg.w	d2

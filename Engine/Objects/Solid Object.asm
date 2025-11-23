@@ -592,13 +592,13 @@ SolidObject_TestClearPush:
 		beq.s	Solid_NotPushing
 		cmpi.b	#AniIDSonAni_SpinDash,anim(a1)
 		beq.s	Solid_NotPushing
-		cmpi.b	#AniIDSonAni_Hurt2,anim(a1)
+		cmpi.b	#AniIDSonAni_Hurt,anim(a1)
 		beq.s	Solid_NotPushing
 		cmpi.b	#AniIDSonAni_Death,anim(a1)
 		beq.s	Solid_NotPushing
 		cmpi.b	#AniIDSonAni_Drown,anim(a1)
 		beq.s	Solid_NotPushing
-		cmpi.b	#AniIDSonAni_Landing,anim(a1)
+		cmpi.b	#AniIDSonAni_Victory,anim(a1)
 		beq.s	Solid_NotPushing
 		move.w	#bytes_to_word(AniIDSonAni_Walk,AniIDSonAni_Run),anim(a1)	; use walking animation (and force it to restart)
 

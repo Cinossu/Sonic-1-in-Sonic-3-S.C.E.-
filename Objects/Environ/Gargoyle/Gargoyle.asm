@@ -59,7 +59,9 @@ Obj_Gargoyle_FireBall:
 		; init
 		lea	ObjDat_Gargoyle_FireBall(pc),a1
 		jsr	(SetUp_ObjAttributes).w
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		move.w	#bytes_to_word(16/2,16/2),y_radius(a0)				; set y_radius and x_radius
 		sfx	sfx_Fireball							; play lava ball sound
 		move.l	#.anifire,address(a0)

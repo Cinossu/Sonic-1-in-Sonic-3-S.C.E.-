@@ -9,6 +9,7 @@ ptr_MS_Wait1:		dc.w MS_Wait1-Map_Sonic
 ptr_MS_Wait2:		dc.w MS_Wait2-Map_Sonic
 ptr_MS_Wait3:		dc.w MS_Wait3-Map_Sonic
 ptr_MS_LookUp:		dc.w MS_LookUp-Map_Sonic
+ptr_MS_Duck:		dc.w MS_Duck-Map_Sonic
 ptr_MS_Walk11:		dc.w MS_Walk11-Map_Sonic
 ptr_MS_Walk12:		dc.w MS_Walk12-Map_Sonic
 ptr_MS_Walk13:		dc.w MS_Walk13-Map_Sonic
@@ -54,43 +55,45 @@ ptr_MS_Roll2:		dc.w MS_Roll2-Map_Sonic
 ptr_MS_Roll3:		dc.w MS_Roll3-Map_Sonic
 ptr_MS_Roll4:		dc.w MS_Roll4-Map_Sonic
 ptr_MS_Roll5:		dc.w MS_Roll5-Map_Sonic
-ptr_MS_Warp1:		dc.w MS_Warp1-Map_Sonic
-ptr_MS_Warp2:		dc.w MS_Warp2-Map_Sonic
-ptr_MS_Warp3:		dc.w MS_Warp3-Map_Sonic
-ptr_MS_Warp4:		dc.w MS_Warp4-Map_Sonic
+ptr_MS_Spindash1:	dc.w MS_Spindash1-Map_Sonic
+ptr_MS_Spindash2:	dc.w MS_Spindash2-Map_Sonic
+ptr_MS_Spindash3:	dc.w MS_Spindash3-Map_Sonic
+ptr_MS_Spindash4:	dc.w MS_Spindash4-Map_Sonic
+ptr_MS_Spindash5:	dc.w MS_Spindash5-Map_Sonic
+ptr_MS_Spindash6:	dc.w MS_Spindash6-Map_Sonic
 ptr_MS_Stop1:		dc.w MS_Stop1-Map_Sonic
 ptr_MS_Stop2:		dc.w MS_Stop2-Map_Sonic
-ptr_MS_Duck:		dc.w MS_Duck-Map_Sonic
 ptr_MS_Balance1:	dc.w MS_Balance1-Map_Sonic
 ptr_MS_Balance2:	dc.w MS_Balance2-Map_Sonic
 ptr_MS_Float1:		dc.w MS_Float1-Map_Sonic
 ptr_MS_Float2:		dc.w MS_Float2-Map_Sonic
 ptr_MS_Float3:		dc.w MS_Float3-Map_Sonic
 ptr_MS_Float4:		dc.w MS_Float4-Map_Sonic
+ptr_MS_Float5:		dc.w MS_Float5-Map_Sonic
+ptr_MS_Float1a:		dc.w MS_Float1a-Map_Sonic
 ptr_MS_Spring:		dc.w MS_Spring-Map_Sonic
-ptr_MS_Hang1:		dc.w MS_Hang1-Map_Sonic
-ptr_MS_Hang2:		dc.w MS_Hang2-Map_Sonic
-ptr_MS_Leap1:		dc.w MS_Leap1-Map_Sonic
-ptr_MS_Leap2:		dc.w MS_Leap2-Map_Sonic
+ptr_MS_HangOn1:		dc.w MS_HangOn1-Map_Sonic
+ptr_MS_HangOn2:		dc.w MS_HangOn2-Map_Sonic
 ptr_MS_Push1:		dc.w MS_Push1-Map_Sonic
 ptr_MS_Push2:		dc.w MS_Push2-Map_Sonic
 ptr_MS_Push3:		dc.w MS_Push3-Map_Sonic
 ptr_MS_Push4:		dc.w MS_Push4-Map_Sonic
-ptr_MS_Surf:		dc.w MS_Surf-Map_Sonic
-ptr_MS_BubStand:	dc.w MS_BubStand-Map_Sonic
+ptr_MS_Death:		dc.w MS_Death-Map_Sonic
 ptr_MS_Burnt:		dc.w MS_Burnt-Map_Sonic
 ptr_MS_Drown:		dc.w MS_Drown-Map_Sonic
-ptr_MS_Death:		dc.w MS_Death-Map_Sonic
-ptr_MS_Shrink1:		dc.w MS_Shrink1-Map_Sonic
-ptr_MS_Shrink2:		dc.w MS_Shrink2-Map_Sonic
-ptr_MS_Shrink3:		dc.w MS_Shrink3-Map_Sonic
-ptr_MS_Shrink4:		dc.w MS_Shrink4-Map_Sonic
-ptr_MS_Shrink5:		dc.w MS_Shrink5-Map_Sonic
-ptr_MS_Float5:		dc.w MS_Float5-Map_Sonic
-ptr_MS_Float6:		dc.w MS_Float6-Map_Sonic
-ptr_MS_Injury:		dc.w MS_Injury-Map_Sonic
 ptr_MS_GetAir:		dc.w MS_GetAir-Map_Sonic
-ptr_MS_WaterSlide:	dc.w MS_WaterSlide-Map_Sonic
+ptr_MS_Injury1:		dc.w MS_Injury1-Map_Sonic
+ptr_MS_Injury2:		dc.w MS_Injury2-Map_Sonic
+ptr_MS_Victory1:	dc.w MS_Victory1-Map_Sonic
+ptr_MS_Victory2:	dc.w MS_Victory2-Map_Sonic
+ptr_MS_Victory3:	dc.w MS_Victory3-Map_Sonic
+ptr_MS_Hang1:		dc.w MS_Hang1-Map_Sonic
+ptr_MS_Hang2:		dc.w MS_Hang2-Map_Sonic
+ptr_MS_Transform1:	dc.w MS_Transform1-Map_Sonic
+ptr_MS_Transform2:	dc.w MS_Transform2-Map_Sonic
+ptr_MS_Transform3:	dc.w MS_Transform3-Map_Sonic
+ptr_MS_Transform4:	dc.w MS_Transform4-Map_Sonic
+ptr_MS_Transform5:	dc.w MS_Transform5-Map_Sonic
 Map_Sonic_end
 
 MS_Null:	dc.w 0
@@ -115,6 +118,11 @@ MS_LookUp:	dc.w 3			; looking up
 		dc.b $EC, $A, 0, 0, $FF, $F0
 		dc.b 4, 8, 0, 9, $FF, $F0
 		dc.b $C, 8, 0, $C, $FF, $F8
+MS_Duck:	dc.w 4			; ducking
+		dc.b $F4, 4, 0, 0, $FF, $FC
+		dc.b $FC, $D, 0, 2, $FF, $F4
+		dc.b $C, 8, 0, $A, $FF, $F4
+		dc.b 4, 0, 0, $D, $FF, $EC
 MS_Walk11:	dc.w 4			; walking 1-1
 		dc.b $EB, $D, 0, 0, $FF, $EC
 		dc.b $FB, 9, 0, 8, $FF, $EC
@@ -300,16 +308,20 @@ MS_Roll4:	dc.w 1			; rolling 4
 		dc.b $F0, $F, 0, 0, $FF, $F0
 MS_Roll5:	dc.w 1			; rolling 5
 		dc.b $F0, $F, 0, 0, $FF, $F0
-MS_Warp1:	dc.w 2			; warped 1 (unused)
-		dc.b $F4, $E, 0, 0, $FF, $EC
-		dc.b $F4, 2, 0, $C, 0, $C
-MS_Warp2:	dc.w 1			; warped 2 (unused)
-		dc.b $F0, $F, 0, 0, $FF, $F0
-MS_Warp3:	dc.w 2			; warped 3 (unused)
-		dc.b $EC, $B, 0, 0, $FF, $F4
-		dc.b $C, 8, 0, $C, $FF, $F4
-MS_Warp4:	dc.w 1			; warped 4 (unused)
-		dc.b $F0, $F, 0, 0, $FF, $F0
+
+MS_Spindash1: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+MS_Spindash2: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+MS_Spindash3: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+MS_Spindash4: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+MS_Spindash5: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+MS_Spindash6: 	dc.w 1
+		dc.b $F8, $F, $0, $0, $FF, $F4
+
 MS_Stop1:	dc.w 2			; stopping 1
 		dc.b $ED, 9, 0, 0, $FF, $F0
 		dc.b $FD, $E, 0, 6, $FF, $F0
@@ -318,11 +330,6 @@ MS_Stop2:	dc.w 4			; stopping 2
 		dc.b $FD, $D, 0, 6, $FF, $F0
 		dc.b $D, 4, 0, $E, 0, 0
 		dc.b 5, 0, 0, $10, $FF, $E8
-MS_Duck:	dc.w 4			; ducking
-		dc.b $F4, 4, 0, 0, $FF, $FC
-		dc.b $FC, $D, 0, 2, $FF, $F4
-		dc.b $C, 8, 0, $A, $FF, $F4
-		dc.b 4, 0, 0, $D, $FF, $EC
 MS_Balance1:	dc.w 3			; balancing 1
 		dc.b $EC, 8, 8, 0, $FF, $E8
 		dc.b $F4, 2, 8, 3, 0, 0 
@@ -338,40 +345,37 @@ MS_Float1:	dc.w 3			; spinning 1 (LZ)
 MS_Float2:	dc.w 2			; spinning 2 (LZ)
 		dc.b $F4, $A, 0, 0, $FF, $E8
 		dc.b $F4, $A, 8, 0, 0, 0
-MS_Float3:	dc.w 3			; spinning 3 (LZ)
+MS_Float3:	dc.w 3			; spinning 5 (LZ)
+		dc.b $F4, $D, 8, 0, $FF, $E4
+		dc.b $FC, 5, 8, 8, 0, 4
+		dc.b 4, 8, 8, $C, $FF, $EC
+MS_Float4:	dc.w 3			; spinning 3 (LZ)
 		dc.b $F4, $D, 0, 0, $FF, $E4
 		dc.b $FC, 0, 0, 8, 0, 4
 		dc.b 4, $C, 0, 9, $FF, $EC
-MS_Float4:	dc.w 3			; spinning 4 (LZ)
+MS_Float5:	dc.w 3			; spinning 6 (LZ)
+		dc.b $F4, $D, 8, 0, $FF, $FC
+		dc.b $FC, 0, 8, 8, $FF, $F4
+		dc.b 4, $C, 8, 9, $FF, $F4
+MS_Float1a:	dc.w 3			; spinning 4 (LZ)
 		dc.b $F4, $D, 0, 0, $FF, $FC
 		dc.b $FC, 5, 0, 8, $FF, $EC
 		dc.b 4, 8, 0, $C, $FF, $FC
+
 MS_Spring:	dc.w 3			; bouncing on a spring
 		dc.b $E8, $B, 0, 0, $FF, $F0
 		dc.b 8, 4, 0, $C, $FF, $F8
 		dc.b $10, 0, 0, $E, $FF, $F8
-MS_Hang1:	dc.w 4			; hanging 1 (LZ)
+MS_HangOn1:	dc.w 4			; hanging 1 (LZ)
 		dc.b $F8, $E, 0, 0, $FF, $E8
 		dc.b 0, 5, 0, $C, 0, 8
 		dc.b $F8, 0, 0, $10, 0, 8
 		dc.b $F0, 0, 0, $11, $FF, $F8
-MS_Hang2:	dc.w 4			; hanging 2 (LZ)
+MS_HangOn2:	dc.w 4			; hanging 2 (LZ)
 		dc.b $F8, $E, 0, 0, $FF, $E8
 		dc.b 0, 5, 0, $C, 0, 8
 		dc.b $F8, 0, 0, $10, 0, 8
 		dc.b $F0, 0, 0, $11, $FF, $F8
-MS_Leap1:	dc.w 5			; celebration leap 1 (unused)
-		dc.b $E8, $A, 0, 0, $FF, $F4
-		dc.b $F0, 1, 0, 9, 0, $C
-		dc.b 0, 9, 0, $B, $FF, $F4
-		dc.b $10, 4, 0, $11, $FF, $F4
-		dc.b 0, 0, 0, $13, $FF, $EC
-MS_Leap2:	dc.w 5			; celebration leap 2 (unused)
-		dc.b $E8, $A, 0, 0, $FF, $F4
-		dc.b $E8, 1, 0, 9, 0, $C
-		dc.b 0, 9, 0, $B, $FF, $F4
-		dc.b $10, 4, 0, $11, $FF, $F4
-		dc.b 0, 0, 0, $13, $FF, $EC
 MS_Push1:	dc.w 2			; pushing 1
 		dc.b $ED, $A, 0, 0, $FF, $F3
 		dc.b 5, $D, 0, 9, $FF, $EB
@@ -386,13 +390,12 @@ MS_Push4:	dc.w 3			; pushing 4
 		dc.b $EC, $A, 0, 0, $FF, $F3
 		dc.b 4, 8, 0, 9, $FF, $F3
 		dc.b $C, 4, 0, $C, $FF, $F3
-MS_Surf:	dc.w 2			; surfing or sliding (unused)
-		dc.b $EC, 9, 0, 0, $FF, $F0
-		dc.b $FC, $E, 0, 6, $FF, $F0
-MS_BubStand:	dc.w 3			; collecting bubble (unused)
-		dc.b $EC, $A, 0, 0, $FF, $F0
-		dc.b 4, 5, 0, 9, $FF, $F8
-		dc.b $E4, 0, 0, $D, $FF, $F8
+MS_Death:	dc.w 5			; death
+		dc.b $E8, $D, 0, 0, $FF, $EC
+		dc.b $E8, 1, 0, 8, 0, $C
+		dc.b $F8, 9, 0, $A, $FF, $F4
+		dc.b 8, $C, 0, $10, $FF, $F4
+		dc.b $10, 0, 0, $14, $FF, $F4
 MS_Burnt:	dc.w 3			; grey death
 		dc.b $E8, $D, 0, 0, $FF, $EC
 		dc.b $E8, 1, 0, 8, 0, $C
@@ -403,44 +406,62 @@ MS_Drown:	dc.w 5			; drowning
 		dc.b $F8, 9, 0, $A, $FF, $F4
 		dc.b 8, $C, 0, $10, $FF, $F4
 		dc.b $10, 0, 0, $14, $FF, $F4
-MS_Death:	dc.w 5			; death
-		dc.b $E8, $D, 0, 0, $FF, $EC
-		dc.b $E8, 1, 0, 8, 0, $C
-		dc.b $F8, 9, 0, $A, $FF, $F4
-		dc.b 8, $C, 0, $10, $FF, $F4
-		dc.b $10, 0, 0, $14, $FF, $F4
-MS_Shrink1:	dc.w 2			; shrinking 1 (unused)
-		dc.b $EC, 8, 0, 0, $FF, $F0
-		dc.b $F4, $F, 0, 3, $FF, $F0
-MS_Shrink2:	dc.w 3			; shrinking 2 (unused)
-		dc.b $EC, 8, 0, 0, $FF, $F0
-		dc.b $F4, $E, 0, 3, $FF, $F0
-		dc.b $C, 8, 0, $F, $FF, $F8
-MS_Shrink3:	dc.w 1			; shrinking 3 (unused)
-		dc.b $F0, $B, 0, 0, $FF, $F4
-MS_Shrink4:	dc.w 1			; shrinking 4 (unused)
-		dc.b $F4, 6, 0, 0, $FF, $F8
-MS_Shrink5:	dc.w 1			; shrinking 5 (unused)
-		dc.b $F8, 1, 0, 0, $FF, $FC
-MS_Float5:	dc.w 3			; spinning 5 (LZ)
-		dc.b $F4, $D, 8, 0, $FF, $E4
-		dc.b $FC, 5, 8, 8, 0, 4
-		dc.b 4, 8, 8, $C, $FF, $EC
-MS_Float6:	dc.w 3			; spinning 6 (LZ)
-		dc.b $F4, $D, 8, 0, $FF, $FC
-		dc.b $FC, 0, 8, 8, $FF, $F4
-		dc.b 4, $C, 8, 9, $FF, $F4
-MS_Injury:	dc.w 3			; injury
-		dc.b $F0, $E, 0, 0, $FF, $EC
-		dc.b $F8, 1, 0, $C, 0, $C
-		dc.b 8, $C, 0, $E, $FF, $F4
 MS_GetAir:	dc.w 3			; collecting bubble (LZ)
 		dc.b $EB, 9, 0, 0, $FF, $F4
 		dc.b $FB, $E, 0, 6, $FF, $EC
 		dc.b 3, 1, 0, $12, 0, $C
-MS_WaterSlide:	dc.w 2			; water	slide (LZ)
+MS_Injury1:	dc.w 3			; injury 1
+		dc.b $F0, $E, 0, 0, $FF, $EC
+		dc.b $F8, 1, 0, $C, 0, $C
+		dc.b 8, $C, 0, $E, $FF, $F4
+MS_Injury2:	dc.w 2			; injury 2 (water slide)
 		dc.b $F0, $F, 0, 0, $FF, $EC
 		dc.b $F8, 2, 0, $10, 0, $C
+MS_Victory1:	dc.w 4			; level win 1
+		dc.b $EC, 1, 0,  0, $FF, $F0
+		dc.b $EC, 5, 0,  2, $FF, $F8
+		dc.b $FC, 9, 0,  6, $FF, $F0
+		dc.b  $C, 4, 0, $C, $FF, $F8
+MS_Victory2:	dc.w 4			; level win 2
+		dc.b $EC, 1, 0,  0, $FF, $F0
+		dc.b $EC, 5, 0,  2, $FF, $F8
+		dc.b $FC, 9, 0,  6, $FF, $F0
+		dc.b  $C, 4, 0, $C, $FF, $F8
+MS_Victory3:	dc.w 4			; level win 3
+		dc.b $EC, 1, 0,  0, $FF, $F0
+		dc.b $EC, 5, 0,  2, $FF, $F8
+		dc.b $FC, 9, 0,  6, $FF, $F0
+		dc.b  $C, 4, 0, $C, $FF, $F8
+MS_Hang1: 	dc.w 3			; hanging 1 (s2-esque)
+		dc.b $E9, $A, 0, 0, $FF, $F0
+		dc.b 1, 0, 0, 9, $FF, $F8
+		dc.b 1, $9, 0, $A, 0, 0
+MS_Hang2: 	dc.w 3			; hanging 2 (s2-esque)
+		dc.b $E9, $A, 0, 0, $FF, $F0
+		dc.b 1, 0, 0, 9, $FF, $F8
+		dc.b 1, $9, 0, $A, 0, 0
+MS_Transform1: 	dc.w 1			; super transform 1
+		dc.b $F0, $B, 0, 0, $FF, $F5
+MS_Transform2: 	dc.w 3			; super transform 2
+		dc.b $E6, $B, 0, 0, $FF, $F0
+		dc.b $EE, 2, 0, $C, 0, 8
+		dc.b 6, 9, 0, $F, $FF, $F0
+MS_Transform3: 	dc.w 3			; super transform 3
+		dc.b $E4, $A, 0, 0, $FF, $F0
+		dc.b $FC, $A, 0, 9, $FF, $F0
+		dc.b $FD, 0, 0, $12, 0, 8
+MS_Transform4: 	dc.w 5			; super transform 4
+		dc.b $E4, 8, 0, 0, $FF, $F0
+		dc.b $EC, 1, 0, 3, $FF, $F0
+		dc.b $EC, 5, 0, 5, $FF, $F8
+		dc.b $FC, $A, 0, 9, $FF, $F0
+		dc.b $FD, 0, 0, $12, 0, 8
+MS_Transform5: 	dc.w 5			; super transform 5
+		dc.b $E4, 8, 0, 0, $FF, $F0
+		dc.b $EC, 1, 0, 3, $FF, $F0
+		dc.b $EC, 5, 0, 5, $FF, $F8
+		dc.b $FC, $A, 0, 9, $FF, $F0
+		dc.b $FD, 0, 0, $12, 0, 8
 		even
 
 fr_null = (ptr_MS_Null-Map_Sonic)/2		; 0
@@ -494,10 +515,12 @@ fr_roll2 = (ptr_MS_Roll2-Map_Sonic)/2		; $2F
 fr_roll3 = (ptr_MS_Roll3-Map_Sonic)/2		; $30
 fr_roll4 = (ptr_MS_Roll4-Map_Sonic)/2		; $31
 fr_roll5 = (ptr_MS_Roll5-Map_Sonic)/2		; $32
-fr_warp1 = (ptr_MS_Warp1-Map_Sonic)/2		; $33
-fr_warp2 = (ptr_MS_Warp2-Map_Sonic)/2		; $34
-fr_warp3 = (ptr_MS_Warp3-Map_Sonic)/2		; $35
-fr_warp4 = (ptr_MS_Warp4-Map_Sonic)/2		; $36
+fr_spindash1 = (ptr_MS_Spindash1-Map_Sonic)/2		
+fr_spindash2 = (ptr_MS_Spindash2-Map_Sonic)/2		
+fr_spindash3 = (ptr_MS_Spindash3-Map_Sonic)/2		
+fr_spindash4 = (ptr_MS_Spindash4-Map_Sonic)/2		
+fr_spindash5 = (ptr_MS_Spindash5-Map_Sonic)/2		
+fr_spindash6 = (ptr_MS_Spindash6-Map_Sonic)/2		
 fr_stop1 = (ptr_MS_Stop1-Map_Sonic)/2		; $37
 fr_stop2 = (ptr_MS_Stop2-Map_Sonic)/2		; $38
 fr_duck = (ptr_MS_Duck-Map_Sonic)/2		; $39
@@ -505,29 +528,30 @@ fr_balance1 = (ptr_MS_Balance1-Map_Sonic)/2	; $3A
 fr_balance2 = (ptr_MS_Balance2-Map_Sonic)/2	; $3B
 fr_float1 = (ptr_MS_Float1-Map_Sonic)/2		; $3C
 fr_float2 = (ptr_MS_Float2-Map_Sonic)/2		; $3D
-fr_float3 = (ptr_MS_Float3-Map_Sonic)/2		; $3E
-fr_float4 = (ptr_MS_Float4-Map_Sonic)/2		; $3F
+fr_float3 = (ptr_MS_Float3-Map_Sonic)/2		; $53
+fr_float4 = (ptr_MS_Float4-Map_Sonic)/2		; $3E
+fr_float5 = (ptr_MS_Float5-Map_Sonic)/2		; $54
+fr_float1a = (ptr_MS_Float1a-Map_Sonic)/2		; $3F
 fr_spring = (ptr_MS_Spring-Map_Sonic)/2		; $40
-fr_hang1 = (ptr_MS_Hang1-Map_Sonic)/2		; $41
-fr_hang2 = (ptr_MS_Hang2-Map_Sonic)/2		; $42
-fr_leap1 = (ptr_MS_Leap1-Map_Sonic)/2		; $43
-fr_leap2 = (ptr_MS_Leap2-Map_Sonic)/2		; $44
+fr_hangon1 = (ptr_MS_HangOn1-Map_Sonic)/2		; $41
+fr_hangon2 = (ptr_MS_HangOn2-Map_Sonic)/2		; $42
 fr_push1 = (ptr_MS_Push1-Map_Sonic)/2		; $45
 fr_push2 = (ptr_MS_Push2-Map_Sonic)/2		; $46
 fr_push3 = (ptr_MS_Push3-Map_Sonic)/2		; $47
 fr_push4 = (ptr_MS_Push4-Map_Sonic)/2		; $48
-fr_surf = (ptr_MS_Surf-Map_Sonic)/2		; $49
-fr_bubstand = (ptr_MS_BubStand-Map_Sonic)/2	; $4A
+fr_death = (ptr_MS_Death-Map_Sonic)/2		; $4D
 fr_burnt = (ptr_MS_Burnt-Map_Sonic)/2		; $4B
 fr_drown = (ptr_MS_Drown-Map_Sonic)/2		; $4C
-fr_death = (ptr_MS_Death-Map_Sonic)/2		; $4D
-fr_shrink1 = (ptr_MS_Shrink1-Map_Sonic)/2	; $4E
-fr_shrink2 = (ptr_MS_Shrink2-Map_Sonic)/2	; $4F
-fr_shrink3 = (ptr_MS_Shrink3-Map_Sonic)/2	; $50
-fr_shrink4 = (ptr_MS_Shrink4-Map_Sonic)/2	; $51
-fr_shrink5 = (ptr_MS_Shrink5-Map_Sonic)/2	; $52
-fr_float5 = (ptr_MS_Float5-Map_Sonic)/2		; $53
-fr_float6 = (ptr_MS_Float6-Map_Sonic)/2		; $54
-fr_injury = (ptr_MS_Injury-Map_Sonic)/2		; $55
 fr_getair = (ptr_MS_GetAir-Map_Sonic)/2		; $56
-fr_waterslide = (ptr_MS_WaterSlide-Map_Sonic)/2	; $57
+fr_injury1 = (ptr_MS_Injury1-Map_Sonic)/2	; $55
+fr_injury2 = (ptr_MS_Injury2-Map_Sonic)/2	; $57
+fr_victory1 = (ptr_MS_Victory1-Map_Sonic)/2
+fr_victory2 = (ptr_MS_Victory2-Map_Sonic)/2
+fr_victory3 = (ptr_MS_Victory3-Map_Sonic)/2
+fr_hang1 = (ptr_MS_Hang1-Map_Sonic)/2
+fr_hang2 = (ptr_MS_Hang2-Map_Sonic)/2
+fr_transform1 = (ptr_MS_Transform1-Map_Sonic)/2
+fr_transform2 = (ptr_MS_Transform2-Map_Sonic)/2
+fr_transform3 = (ptr_MS_Transform3-Map_Sonic)/2
+fr_transform4 = (ptr_MS_Transform4-Map_Sonic)/2
+fr_transform5 = (ptr_MS_Transform5-Map_Sonic)/2

@@ -114,8 +114,9 @@ Obj_Missile:
 		lea	ObjDat_BuzzBomber_Missile(pc),a1
 		jsr	(SetUp_ObjAttributes).w
 		clr.b	routine(a0)
+	if NoShieldProjectileBouncing<1
 		bset	#shield_reaction.all_shields,shield_reaction(a0)		; bounce off all shields
-
+	endif
 		andi.b	#( \
 			setBit(status.npc.x_flip) | \
 			setBit(status.npc.y_flip) \

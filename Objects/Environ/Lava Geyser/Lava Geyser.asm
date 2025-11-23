@@ -221,7 +221,9 @@ Obj_LavaGeyser_Extra:
 		; init
 		lea	ObjDat3_LavaGeyser(pc),a1
 		jsr	(SetUp_ObjAttributes3).w
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		move.l	#.loc_EFFC,address(a0)
 
 .loc_EFFC

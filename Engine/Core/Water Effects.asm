@@ -226,7 +226,7 @@ LZ_WaterTunnels:
 .movesonic
 		addq.w	#4,x_pos(a1)
 		move.l	#words_to_long($400,0),x_vel(a1)
-		move.b	#AniIDSonAni_Float2,anim(a1)
+		move.b	#AniIDSonAni_FloatSpin,anim(a1)
 		bset	#status.player.in_air,status(a1)
 
 		; clear
@@ -254,7 +254,7 @@ LZ_WaterTunnels:
 		dbf	d2,.chksonic
 		tst.b	(a3)
 		beq.s	.return2
-		move.b	#AniIDSonAni_Hurt,anim(a1)
+		move.b	#AniIDSonAni_Slide,anim(a1)
 
 .clr
 		clr.b	(a3)

@@ -75,7 +75,7 @@ Obj_Tails_Tail:
 		dc.b 0		; TailsAni_Walk		->				; 0
 		dc.b 0		; Run			->				; 1
 		dc.b 3		; TailsAni_Roll		-> Directional			; 2
-		dc.b 3		; TailsAni_Roll2	-> Directional			; 3
+		dc.b 3		; TailsAni_RollFast	-> Directional			; 3
 		dc.b 9		; TailsAni_Push		-> Pushing			; 4
 		dc.b 1		; TailsAni_Wait		-> Swish			; 5
 		dc.b 0		; TailsAni_Balance	-> Blank			; 6
@@ -86,20 +86,19 @@ Obj_Tails_Tail:
 		dc.b 0		; TailsAni_Dummy2	->				; B
 		dc.b 0		; TailsAni_Dummy3	->				; C
 		dc.b 8		; TailsAni_Stop		-> Skidding			; D
-		dc.b 0		; TailsAni_Float1	->				; E
-		dc.b 0		; TailsAni_Float2	->				; F
+		dc.b 0		; TailsAni_Float	->				; E
+		dc.b 0		; TailsAni_FloatSpin	->				; F
 		dc.b 0		; TailsAni_Spring	->				; 10
-		dc.b 0		; TailsAni_Hang		->				; 11
+		dc.b 0		; TailsAni_HangOn	->				; 11
 		dc.b 0		; (Unused?)						; 12
 		dc.b 0		; TailsAni_Victory	->				; 13
-		dc.b $A		; TailsAni_Hang2	-> Hanging			; 14
+		dc.b $A		; TailsAni_Hang		-> Hanging			; 14
+		dc.b 0		; TailsAni_Slide	->				; 19
 		dc.b 0		; TailsAni_Bubble	->				; 15
-		dc.b 0		; TailsAni_Death1	->				; 16
+		dc.b 0		; TailsAni_Drown	->				; 16
+		dc.b 0		; TailsAni_Hurt		->				; 1A
 		dc.b 0		; TailsAni_Death2	->				; 17
 		dc.b 0		; TailsAni_Death3	->				; 18
-		dc.b 0		; TailsAni_Hurt		->				; 19
-		dc.b 0		; TailsAni_Hurt2	->				; 1A
-		dc.b 0		; TailsAni_Slide	->				; 1B
 		dc.b 0		; TailsAni_Blank	->				; 1C
 		dc.b 0		; TailsAni_Dummy4	->				; 1D
 		dc.b 0		; TailsAni_Dummy5	->				; 1E

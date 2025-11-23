@@ -171,7 +171,9 @@ Obj_BombBadnik_Shrapnel:
 		; init
 		lea	ObjDat3_Bomb_Shrapnel(pc),a1
 		jsr	(SetUp_ObjAttributes3).w
+	if NoShieldProjectileBouncing<1
 		bset	#shield_reaction.all_shields,shield_reaction(a0)		; bounce off all shields
+	endif
 		move.l	#.action,address(a0)
 		bset	#render_flags.on_screen,render_flags(a0)
 

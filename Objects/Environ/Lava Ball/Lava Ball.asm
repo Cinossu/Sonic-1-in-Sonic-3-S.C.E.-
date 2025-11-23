@@ -73,8 +73,9 @@ Obj_LavaBall:
 
 .notSLZ
 		move.b	#$B|collision_flags.npc.hurt,collision_flags(a0)
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
-
+	endif
 		; check MZ boss
 		tst.b	objoff_3F(a0)							; is lava ball was created by the MZ boss?
 		beq.s	.speed								; if not, branch

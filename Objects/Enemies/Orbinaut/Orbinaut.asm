@@ -105,7 +105,9 @@ Obj_Orbinaut_Orb:
 		bne.s	.circle								; if not, branch
 		tst.b	orbo_angle(a0)							; is spikeorb directly under the orbinaut?
 		bne.s	.circle								; if not, branch
+	if NoShieldProjectileBouncing<1
 		bset	#shield_reaction.all_shields,shield_reaction(a0)		; bounce off all shields
+	endif
 		move.l	#.move,address(a0)
 		subq.b	#1,orb_count(a1)
 		bpl.s	.fire

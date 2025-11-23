@@ -9,6 +9,7 @@ DPLC_Sonic:
 		dc.w SonPLC_Wait2-DPLC_Sonic
 		dc.w SonPLC_Wait3-DPLC_Sonic
 		dc.w SonPLC_LookUp-DPLC_Sonic
+		dc.w SonPLC_Duck-DPLC_Sonic
 		dc.w SonPLC_Walk11-DPLC_Sonic
 		dc.w SonPLC_Walk12-DPLC_Sonic
 		dc.w SonPLC_Walk13-DPLC_Sonic
@@ -54,44 +55,46 @@ DPLC_Sonic:
 		dc.w SonPLC_Roll3-DPLC_Sonic
 		dc.w SonPLC_Roll4-DPLC_Sonic
 		dc.w SonPLC_Roll5-DPLC_Sonic
-		dc.w SonPLC_Warp1-DPLC_Sonic
-		dc.w SonPLC_Warp2-DPLC_Sonic
-		dc.w SonPLC_Warp3-DPLC_Sonic
-		dc.w SonPLC_Warp4-DPLC_Sonic
+		dc.w SonPLC_Spindash1-DPLC_Sonic
+		dc.w SonPLC_Spindash2-DPLC_Sonic
+		dc.w SonPLC_Spindash3-DPLC_Sonic
+		dc.w SonPLC_Spindash4-DPLC_Sonic
+		dc.w SonPLC_Spindash5-DPLC_Sonic
+		dc.w SonPLC_Spindash6-DPLC_Sonic
 		dc.w SonPLC_Stop1-DPLC_Sonic
 		dc.w SonPLC_Stop2-DPLC_Sonic
-		dc.w SonPLC_Duck-DPLC_Sonic
 		dc.w SonPLC_Balance1-DPLC_Sonic
 		dc.w SonPLC_Balance2-DPLC_Sonic
 		dc.w SonPLC_Float1-DPLC_Sonic
 		dc.w SonPLC_Float2-DPLC_Sonic
-		dc.w SonPLC_Float3-DPLC_Sonic
+		dc.w SonPLC_Float1-DPLC_Sonic
 		dc.w SonPLC_Float4-DPLC_Sonic
+		dc.w SonPLC_Float4-DPLC_Sonic
+		dc.w SonPLC_Float1a-DPLC_Sonic
 		dc.w SonPLC_Spring-DPLC_Sonic
-		dc.w SonPLC_Hang1-DPLC_Sonic
-		dc.w SonPLC_Hang2-DPLC_Sonic
-		dc.w SonPLC_Leap1-DPLC_Sonic
-		dc.w SonPLC_Leap2-DPLC_Sonic
+		dc.w SonPLC_HangOn1-DPLC_Sonic
+		dc.w SonPLC_HangOn2-DPLC_Sonic
 		dc.w SonPLC_Push1-DPLC_Sonic
 		dc.w SonPLC_Push2-DPLC_Sonic
 		dc.w SonPLC_Push3-DPLC_Sonic
 		dc.w SonPLC_Push4-DPLC_Sonic
-		dc.w SonPLC_Surf-DPLC_Sonic
-		dc.w SonPLC_BubStand-DPLC_Sonic
 		dc.w SonPLC_Death-DPLC_Sonic
-		dc.w SonPLC_Drown-DPLC_Sonic
 		dc.w SonPLC_Burnt-DPLC_Sonic
-		dc.w SonPLC_Shrink1-DPLC_Sonic
-		dc.w SonPLC_Shrink2-DPLC_Sonic
-		dc.w SonPLC_Shrink3-DPLC_Sonic
-		dc.w SonPLC_Shrink4-DPLC_Sonic
-		dc.w SonPLC_Shrink5-DPLC_Sonic
-		dc.w SonPLC_Float1-DPLC_Sonic
-		dc.w SonPLC_Float3-DPLC_Sonic
-		dc.w SonPLC_Injury-DPLC_Sonic
+		dc.w SonPLC_Drown-DPLC_Sonic
 		dc.w SonPLC_GetAir-DPLC_Sonic
-		dc.w SonPLC_Slide-DPLC_Sonic
-		
+		dc.w SonPLC_Injury1-DPLC_Sonic
+		dc.w SonPLC_Injury2-DPLC_Sonic
+		dc.w SonPLC_Victory1-DPLC_Sonic
+		dc.w SonPLC_Victory2-DPLC_Sonic
+		dc.w SonPLC_Victory3-DPLC_Sonic
+		dc.w SonPLC_Hang1-DPLC_Sonic
+		dc.w SonPLC_Hang2-DPLC_Sonic
+		dc.w SonPLC_Transform1-DPLC_Sonic
+		dc.w SonPLC_Transform2-DPLC_Sonic
+		dc.w SonPLC_Transform3-DPLC_Sonic
+		dc.w SonPLC_Transform4-DPLC_Sonic
+		dc.w SonPLC_Transform5-DPLC_Sonic
+
 SonPLC_Null:	dc.w 0
 SonPLC_Stand:	dc.w 4
 		dc.b $20, $00, $70, $03, $20, $0B, $20, $0E
@@ -103,6 +106,8 @@ SonPLC_Wait3:	dc.w 3
 		dc.b $50, $20, $50, $17, $20, $26
 SonPLC_LookUp:	dc.w 3
 		dc.b $80, $29, $20, $0B, $20, $0E
+SonPLC_Duck:	dc.w 4
+		dc.b $13, $4D, $73, $4F, $23, $57, $03, $5A
 SonPLC_Walk11:	dc.w 4
 		dc.b $70, $32, $50, $3A, $50, $40, $10, $46
 SonPLC_Walk12:	dc.w 2
@@ -193,20 +198,22 @@ SonPLC_Roll4:	dc.w 1
 		dc.b $F2, $CC
 SonPLC_Roll5:	dc.w 1
 		dc.b $F2, $DC
-SonPLC_Warp1:	dc.w 2
-		dc.b $B2, $EC, $22, $F8
-SonPLC_Warp2:	dc.w 1
-		dc.b $F2, $FB
-SonPLC_Warp3:	dc.w 2
-		dc.b $B3, $0B, $23, $17
-SonPLC_Warp4:	dc.w 1
-		dc.b $F3, $1A
+SonPLC_Spindash1:dc.w 1
+		dc.b $F5, $09
+SonPLC_Spindash2:dc.w 1
+		dc.b $F5, $19
+SonPLC_Spindash3:dc.w 1
+		dc.b $F5, $29
+SonPLC_Spindash4:dc.w 1
+		dc.b $F5, $39
+SonPLC_Spindash5:dc.w 1
+		dc.b $F5, $49
+SonPLC_Spindash6:dc.w 1
+		dc.b $F5, $59
 SonPLC_Stop1:	dc.w 2
 		dc.b $53, $2A, $B3, $30
 SonPLC_Stop2:	dc.w 4
 		dc.b $53, $3C, $73, $42, $13, $4A, $03, $4C
-SonPLC_Duck:	dc.w 4
-		dc.b $13, $4D, $73, $4F, $23, $57, $03, $5A
 SonPLC_Balance1:dc.w 3
 		dc.b $23, $5B, $23, $5E, $F3, $61
 SonPLC_Balance2:dc.w 3
@@ -215,20 +222,16 @@ SonPLC_Float1:	dc.w 3
 		dc.b $73, $85, $33, $8D, $23, $91
 SonPLC_Float2:	dc.w 1
 		dc.b $83, $94
-SonPLC_Float3:	dc.w 3
-		dc.b $73, $9D, $03, $A5, $33, $A6
 SonPLC_Float4:	dc.w 3
+		dc.b $73, $9D, $03, $A5, $33, $A6
+SonPLC_Float1a:	dc.w 3
 		dc.b $73, $AA, $33, $B2, $23, $B6
 SonPLC_Spring:	dc.w 3
 		dc.b $B3, $B9, $13, $C5, $03, $C7
-SonPLC_Hang1:	dc.w 4
+SonPLC_HangOn1:	dc.w 4
 		dc.b $B3, $C8, $33, $D4, $03, $D8, $03, $D9
-SonPLC_Hang2:	dc.w 4
+SonPLC_HangOn2:	dc.w 4
 		dc.b $B3, $DA, $33, $E6, $03, $EA, $03, $EB
-SonPLC_Leap1:	dc.w 5
-		dc.b $83, $EC, $13, $F5, $53, $F7, $13, $FD, $03, $FF
-SonPLC_Leap2:	dc.w 5
-		dc.b $84, $00, $14, $09, $53, $F7, $13, $FD, $03, $FF
 SonPLC_Push1:	dc.w 2
 		dc.b $84, $0B, $74, $14
 SonPLC_Push2:	dc.w 3
@@ -237,30 +240,61 @@ SonPLC_Push3:	dc.w 2
 		dc.b $84, $2A, $74, $33
 SonPLC_Push4:	dc.w 3
 		dc.b $84, $1C, $24, $3B, $14, $3E
-SonPLC_Surf:	dc.w 2
-		dc.b $54, $40, $B4, $46
-SonPLC_BubStand:dc.w 3
-		dc.b $84, $52, $34, $5B, $04, $5F
-SonPLC_Death:	dc.w 3
+SonPLC_Death:	dc.w 5
+		dc.b $74, $8B, $14, $7E, $54, $93, $34, $86, $04, $8A
+SonPLC_Burnt:	dc.w 3
 		dc.b $74, $60, $14, $68, $B4, $6A
 SonPLC_Drown:	dc.w 5
 		dc.b $74, $76, $14, $7E, $54, $80, $34, $86, $04, $8A
-SonPLC_Burnt:	dc.w 5
-		dc.b $74, $8B, $14, $7E, $54, $93, $34, $86, $04, $8A
-SonPLC_Shrink1:	dc.w 2
-		dc.b $24, $99, $F4, $9C
-SonPLC_Shrink2:	dc.w 3
-		dc.b $24, $AC, $B4, $AF, $24, $BB
-SonPLC_Shrink3:	dc.w 1
-		dc.b $B4, $BE
-SonPLC_Shrink4:	dc.w 1
-		dc.b $54, $CA
-SonPLC_Shrink5:	dc.w 1
-		dc.b $14, $D0
-SonPLC_Injury:	dc.w 3
-		dc.b $B4, $D2, $14, $DE, $34, $E0
 SonPLC_GetAir:	dc.w 3
 		dc.b $54, $E4, $B4, $EA, $10, $6D
-SonPLC_Slide:	dc.w 2
+SonPLC_Injury1:	dc.w 3
+		dc.b $B4, $D2, $14, $DE, $34, $E0
+SonPLC_Injury2:	dc.w 2
 		dc.b $F4, $F6, $25, $06
+SonPLC_Victory1:dc.w 4
+		dc.b $15, $73
+		dc.b $30, $13
+		dc.b $55, $75
+		dc.b $15, $71
+SonPLC_Victory2:dc.w 4
+		dc.b $15, $73
+		dc.b $30, $22
+		dc.b $55, $75
+		dc.b $15, $71
+SonPLC_Victory3:dc.w 4
+		dc.b $15, $69
+		dc.b $30, $22
+		dc.b $55, $6B
+		dc.b $15, $71
+SonPLC_Hang1:	dc.w 3
+		dc.b $85, $7B
+		dc.b $05, $84
+		dc.b $55, $85
+SonPLC_Hang2:	dc.w 3
+		dc.b $85, $7B
+		dc.b $05, $84
+		dc.b $55, $8B
+SonPLC_Transform1:dc.w 1
+		dc.b $B5, $91
+SonPLC_Transform2:dc.w 3
+		dc.b $B5, $9D
+		dc.b $25, $A9
+		dc.b $55, $AC
+SonPLC_Transform3:dc.w 3
+		dc.b $85, $B2
+		dc.b $85, $BB
+		dc.b $05, $C4
+SonPLC_Transform4:dc.w 5
+		dc.b $25, $C5
+		dc.b $15, $C8
+		dc.b $35, $CA
+		dc.b $85, $CE
+		dc.b $05, $D7
+SonPLC_Transform5:dc.w 5
+		dc.b $25, $D8
+		dc.b $15, $DB
+		dc.b $35, $CA
+		dc.b $85, $CE
+		dc.b $05, $D7
 		even

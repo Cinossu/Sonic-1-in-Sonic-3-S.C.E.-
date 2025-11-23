@@ -15,7 +15,9 @@ Obj_LavaWall:
 		; init
 		lea	ObjDat_LavaWall(pc),a1
 		jsr	(SetUp_ObjAttributes).w
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		bset	#render_flags.multi_sprite,render_flags(a0)			; set multi-draw flag
 		move.w	#1,mainspr_childsprites(a0)					; set sub objects
 

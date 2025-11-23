@@ -320,7 +320,9 @@ Caterkiller_FragHead:									; head
 		move.w	d0,x_vel(a0)
 		move.w	#-$400,y_vel(a0)
 		andi.b	#$F8,mapping_frame(a0)
+	if NoShieldProjectileBouncing<1
 		bset	#shield_reaction.all_shields,shield_reaction(a0)		; bounce off all shields
+	endif
 		move.l	#.main,address(a0)
 
 .main

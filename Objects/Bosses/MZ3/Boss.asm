@@ -394,7 +394,9 @@ Obj_BossFire_Fire:
 		jsr	(SetUp_ObjAttributes).w
 		clr.b	routine(a0)
 		move.w	height_pixels(a0),y_radius(a0)					; set y_radius and x_radius
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 		move.w	y_pos(a0),objoff_38(a0)
 		move.l	#Obj74_Drop,obBFF_Jump(a0)
 		move.l	#Obj74_Action,address(a0)

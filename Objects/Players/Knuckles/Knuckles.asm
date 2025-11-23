@@ -2865,13 +2865,13 @@ loc_17E84:
 		add.w	(Camera_H_scroll_shift).w,d2
 
 		; check
-		lea	(KnuxAni_Roll2).l,a1						; use roll 2 animation
+		lea	(KnuxAni_RollFast).l,a1						; use fast roll animation
 		cmpi.w	#$600,d2
 		bhs.s	loc_17EB8
 
-.krani		:= KnuxAni_Roll-KnuxAni_Roll2						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
+.krani		:= KnuxAni_Roll-KnuxAni_RollFast						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
 
-		lea	(.krani)(a1),a1							; use roll animation
+		lea	(.krani)(a1),a1							; use regular roll animation
 
 loc_17EB8:
 		neg.w	d2

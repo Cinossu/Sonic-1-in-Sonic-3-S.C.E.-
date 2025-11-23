@@ -7,7 +7,9 @@
 ; =============== S U B R O U T I N E =======================================
 
 Obj_Invisible_ShockBlock:
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.lightning_shield,shield_reaction(a0)
+	endif
 		bra.s	Obj_Invisible_HurtBlock
 
 ; ---------------------------------------------------------------------------
@@ -17,7 +19,9 @@ Obj_Invisible_ShockBlock:
 ; =============== S U B R O U T I N E =======================================
 
 Obj_Invisible_LavaBlock:
+	if NoShieldProjectileBouncing<2
 		bset	#shield_reaction.fire_shield,shield_reaction(a0)
+	endif
 
 ; ---------------------------------------------------------------------------
 ; Invisible horizontal hurt block (Object)

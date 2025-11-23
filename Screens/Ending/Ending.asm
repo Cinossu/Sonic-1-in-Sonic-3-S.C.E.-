@@ -408,7 +408,7 @@ Obj_Sonic_Ending:
 		lea	(Player_2).w,a1							; a1=character
 		tst.l	address(a1)							; is player RAM empty?
 		beq.s	.notp22								; if yes, branch
-		move.b	#AniIDSonAni_Landing,anim(a1)					; use "landing" animation
+		move.b	#AniIDSonAni_Victory,anim(a1)					; use victory animation
 
 .notp22
 
@@ -468,7 +468,7 @@ Obj_Sonic_Ending:
 		lea	(Player_2).w,a1							; a1=character
 		tst.l	address(a1)							; is player RAM empty?
 		beq.s	.notp222							; if yes, branch
-		move.b	#AniIDSonAni_Landing,anim(a1)					; use "landing" animation
+		move.b	#AniIDSonAni_Victory,anim(a1)					; use victory animation
 
 .notp222
 

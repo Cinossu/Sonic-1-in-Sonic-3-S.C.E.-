@@ -676,7 +676,7 @@ Sonic_BalanceOnObjRight:
 		addq.w	#6,d2								; extend balance range
 		cmp.w	d2,d1								; is Sonic within (two units before and) four units past the right edge?
 		blt.w	loc_112EA							; if so branch
-		move.b	#AniIDSonAni_Balance2,anim(a0)					; if REALLY close to the edge, use different animation (Balance animation 2)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)				; if REALLY close to the edge, use different animation (Balance animation 2)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 
@@ -690,7 +690,7 @@ loc_11128:
 		addq.w	#6,d2								; extend balance range
 		cmp.w	d2,d1								; is Sonic within (two units before and) four units past the right edge?
 		blt.w	loc_112EA							; if so branch
-		move.b	#AniIDSonAni_Balance2,anim(a0)					; if REALLY close to the edge, use different animation (Balance animation 2)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)				; if REALLY close to the edge, use different animation (Balance animation 2)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 
@@ -700,7 +700,7 @@ Sonic_BalanceOnObjLeft:
 		move.b	#AniIDSonAni_Balance,anim(a0)					; balance animation 1
 		cmpi.w	#-4,d1								; is Sonic within (two units before and) four units past the left edge?
 		bge.w	loc_112EA							; if so branch (instruction signed to match)
-		move.b	#AniIDSonAni_Balance2,anim(a0)					; if REALLY close to the edge, use different animation (Balance animation 2)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)				; if REALLY close to the edge, use different animation (Balance animation 2)
 		bra.w	loc_112EA
 loc_11166:	; +
 		; somewhat dummied out/redundant code from Sonic 2
@@ -710,7 +710,7 @@ loc_11166:	; +
 		move.b	#AniIDSonAni_Balance,anim(a0)					; balance animation 1
 		cmpi.w	#-4,d1								; is Sonic within (two units before and) four units past the left edge?
 		bge.w	loc_112EA							; if so branch (instruction signed to match)
-		move.b	#AniIDSonAni_Balance2,anim(a0)					; if REALLY close to the edge, use different animation (Balance animation 2)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)				; if REALLY close to the edge, use different animation (Balance animation 2)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 ; balancing checks for when you're on the edge of part of the level
@@ -731,7 +731,7 @@ Sonic_Balance:
 		bsr.w	ChooseChkFloorEdge
 		cmpi.w	#$C,d1
 		blt.w	loc_112EA
-		move.b	#AniIDSonAni_Balance2,anim(a0)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)
 		bra.w	loc_112EA
 		; on right edge but facing left:
 loc_111CE:	; +
@@ -745,7 +745,7 @@ loc_111CE:	; +
 		bsr.w	ChooseChkFloorEdge
 		cmpi.w	#$C,d1
 		blt.w	loc_112EA
-		move.b	#AniIDSonAni_Balance2,anim(a0)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 
@@ -760,7 +760,7 @@ loc_111F6:
 		bsr.w	ChooseChkFloorEdge
 		cmpi.w	#$C,d1
 		blt.w	loc_112EA
-		move.b	#AniIDSonAni_Balance2,anim(a0)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 
@@ -772,7 +772,7 @@ loc_11228:
 		bsr.w	ChooseChkFloorEdge
 		cmpi.w	#$C,d1
 		blt.w	loc_112EA
-		move.b	#AniIDSonAni_Balance2,anim(a0)
+		move.b	#AniIDSonAni_BalanceEdge,anim(a0)
 		bra.w	loc_112EA
 ; ---------------------------------------------------------------------------
 
@@ -3364,13 +3364,13 @@ loc_12A2A:
 		add.w	(Camera_H_scroll_shift).w,d2
 
 		; check
-		lea	(SonAni_Roll2).l,a1						; use roll 2 animation
+		lea	(SonAni_RollFast).l,a1						; use fast roll animation
 		cmpi.w	#$600,d2
 		bhs.s	loc_12A5E
 
-.sani		:= SonAni_Roll-SonAni_Roll2						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
+.sani		:= SonAni_Roll-SonAni_RollFast						; Macro AS hack: if you use subtraction directly in lea it will slow down the assembly several times. So we will use :=/set
 
-		lea	(.sani)(a1),a1							; use roll animation
+		lea	(.sani)(a1),a1							; use regular roll animation
 
 loc_12A5E:
 		neg.w	d2

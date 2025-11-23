@@ -192,7 +192,7 @@ Obj_Pole:
 		add.w	x_pos(a0),d0
 		move.w	d0,x_pos(a1)
 		bclr	#status.player.x_flip,status(a1)
-		move.b	#AniIDSonAni_Hang,anim(a1)					; set player's animation to "hanging" ($11)
+		move.b	#AniIDSonAni_HangOn,anim(a1)					; set player's animation to "hanging on"
 		move.b	#1,object_control(a1)						; lock controls
 		bset	d2,(WindTunnel_holding_flag).w					; disable wind tunnel
 		st	(a2)								; set "grab" flag

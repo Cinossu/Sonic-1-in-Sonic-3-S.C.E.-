@@ -86,5 +86,5 @@ Obj_Updraft:
 
 .alt
 		move.w	#1,ground_vel(a1)
-		move.b	#AniIDSonAni_Float2,anim(a1)
+		move.b	#AniIDSonAni_FloatSpin,anim(a1)
 		rts

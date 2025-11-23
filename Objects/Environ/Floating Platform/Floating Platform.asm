@@ -242,7 +242,7 @@ FloatingPlatform_SetPlayerFalling:
 		bne.s	.return
 		cmpi.b	#AniIDSonAni_Roll,anim(a1)					; is player in his rolling animation?
 		beq.s	.return								; if so, branch
-		move.b	#AniIDSonAni_Hurt,anim(a1)					; set falling animation
+		move.b	#AniIDSonAni_Slide,anim(a1)					; set sliding/falling animation
 	endif
 
 .return

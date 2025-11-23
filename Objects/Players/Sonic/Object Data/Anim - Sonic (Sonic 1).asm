@@ -2,107 +2,166 @@
 ; Animation script - Sonic
 ; ---------------------------------------------------------------------------
 AniSonic: offsetTable
-		ptrTableEntry.w SonAni_Walk				; 0
-		ptrTableEntry.w SonAni_Run				; 1
-		ptrTableEntry.w SonAni_Roll				; 2
-		ptrTableEntry.w SonAni_Roll2				; 3
-		ptrTableEntry.w SonAni_Push				; 4
-		ptrTableEntry.w SonAni_Wait				; 5
-		ptrTableEntry.w SonAni_Balance				; 6
-		ptrTableEntry.w SonAni_LookUp				; 7
-		ptrTableEntry.w SonAni_Duck				; 8
-		ptrTableEntry.w SonAni_SpinDash;SonAni_SpinDash		; 9
-		ptrTableEntry.w SonAni_Whistle;SonAni_Whistle		; A (Unused)
-		ptrTableEntry.w AniSonic0B;AniSonic0B			; B (Unused?)
-		ptrTableEntry.w SonAni_Balance2;SonAni_Balance2		; C
-		ptrTableEntry.w SonAni_Stop				; D
-		ptrTableEntry.w SonAni_Float1				; E
-		ptrTableEntry.w SonAni_Float2				; F
-		ptrTableEntry.w SonAni_Spring				; 10
-		ptrTableEntry.w SonAni_Hang				; 11
-		ptrTableEntry.w SonAni_HurtBW;SonAni_HurtBW		; 12
-		ptrTableEntry.w SonAni_Landing;SonAni_Landing		; 13
-		ptrTableEntry.w SonAni_Hang2;SonAni_Hang2		; 14
-		ptrTableEntry.w SonAni_GetAir				; 15
-		ptrTableEntry.w SonAni_DeathBW;SonAni_DeathBW		; 16 (Unused)
-		ptrTableEntry.w SonAni_Drown				; 17
-		ptrTableEntry.w SonAni_Death				; 18
-		ptrTableEntry.w SonAni_Hurt;SonAni_Hurt			; 19
-		ptrTableEntry.w SonAni_Hurt2;SonAni_Hurt2		; 1A
-		ptrTableEntry.w SonAni_Slide				; 1B
-		ptrTableEntry.w SonAni_Blank				; 1C
-		ptrTableEntry.w SonAni_Hurt3;SonAni_Hurt3		; 1D
-		ptrTableEntry.w SonAni_Float3;SonAni_Float3		; 1E
-		ptrTableEntry.w SonAni_Transform;SonAni_Transform	; 1F
-		ptrTableEntry.w AniSonic20;AniSonic20			; 20 (Unused?)
-		ptrTableEntry.w AniSonic21;AniSonic21			; 21 (Unused?)
-		ptrTableEntry.w SonAni_Carry;SonAni_Carry		; 22
-		ptrTableEntry.w SonAni_Carry2;SonAni_Carry2		; 23
+		ptrTableEntry.w SonAni_Walk
+		ptrTableEntry.w SonAni_Run
+		ptrTableEntry.w SonAni_Roll
+		ptrTableEntry.w SonAni_RollFast
+		ptrTableEntry.w SonAni_Push
+		ptrTableEntry.w SonAni_Wait
+		ptrTableEntry.w SonAni_Balance
+		ptrTableEntry.w SonAni_BalanceEdge
+		ptrTableEntry.w SonAni_LookUp
+		ptrTableEntry.w SonAni_Duck
+		ptrTableEntry.w SonAni_SpinDash
+		ptrTableEntry.w SonAni_Stop
+		ptrTableEntry.w SonAni_Float
+		ptrTableEntry.w SonAni_FloatSpin
+		ptrTableEntry.w SonAni_Spring
+		ptrTableEntry.w SonAni_HangOn
+		ptrTableEntry.w SonAni_Victory
+		ptrTableEntry.w SonAni_Hang
+		ptrTableEntry.w SonAni_Slide
+		ptrTableEntry.w SonAni_GetAir
+		ptrTableEntry.w SonAni_Drown
+		ptrTableEntry.w SonAni_Hurt
+		ptrTableEntry.w SonAni_Death
+		ptrTableEntry.w SonAni_Blank
+		ptrTableEntry.w SonAni_Transform
+		ptrTableEntry.w AniSonic20				; (Unused?)
+		ptrTableEntry.w AniSonic21				; (Unused?)
+		ptrTableEntry.w SonAni_Carry
+		ptrTableEntry.w SonAni_Carry2
 
-SonAni_Walk:	dc.b $FF, fr_walk13, fr_walk14,	fr_walk15, fr_walk16, fr_walk11, fr_walk12, afEnd
-		even
-SonAni_Run:	dc.b $FF,  fr_run11,  fr_run12,  fr_run13,  fr_run14,     afEnd,     afEnd, afEnd
-		even
-SonAni_Roll:	dc.b $FE,  fr_roll1,  fr_roll2,  fr_roll3,  fr_roll4,  fr_roll5,     afEnd, afEnd
-		even
-SonAni_Roll2:	dc.b $FE,  fr_roll1,  fr_roll2,  fr_roll5,  fr_roll3,  fr_roll4,  fr_roll5, afEnd
-		even
-SonAni_Push:	dc.b $FD,  fr_push1,  fr_push2,  fr_push3,  fr_push4,     afEnd,     afEnd, afEnd
-		even
-SonAni_Wait:	dc.b $17, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand
-		dc.b fr_stand, fr_stand, fr_stand, fr_wait2, fr_wait1, fr_wait1, fr_wait1, fr_wait2, fr_wait3, afBack, 2
-		even
-SonAni_Balance:	dc.b $1F, fr_balance1, fr_balance2, afEnd
-		even
-SonAni_LookUp:	dc.b $3F, fr_lookup, afEnd
-		even
-SonAni_Duck:	dc.b $3F, fr_duck, afEnd
-		even
+SonAni_Walk:	
+		dc.b	$FF
+		dc.b	fr_walk13, fr_walk14, fr_walk15, fr_walk16, fr_walk11, fr_walk12
+		dc.b	afEnd
+
+SonAni_Run:	
+		dc.b	$FF
+		dc.b	fr_run11, fr_run12, fr_run13, fr_run14
+		dc.b	afEnd
+
+SonAni_Roll:	
+		dc.b	$FE
+		dc.b	fr_roll1, fr_roll2, fr_roll3, fr_roll4, fr_roll5
+		dc.b	afEnd
+
+SonAni_RollFast:	
+		dc.b	$FE
+		dc.b	fr_roll1, fr_roll2, fr_roll5, fr_roll3, fr_roll4, fr_roll5
+		dc.b	afEnd
+
+SonAni_Push:	
+		dc.b	$FD
+		dc.b	fr_push1, fr_push2, fr_push3, fr_push4
+		dc.b	afEnd
+
+SonAni_Wait:	
+		dc.b	$17
+		dc.b	fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand
+		dc.b	fr_stand, fr_stand, fr_stand, fr_stand, fr_stand, fr_stand
+		dc.b	fr_wait2, fr_wait1, fr_wait1, fr_wait1, fr_wait2, fr_wait3
+		dc.b	afBack, 2
+		
+SonAni_Balance:	
+		dc.b	$1F
+		dc.b	fr_balance1, fr_balance2
+		dc.b	afEnd
+
+SonAni_BalanceEdge:
+		dc.b	$1F
+		dc.b	fr_balance1, fr_balance2
+		dc.b	afEnd
+
+SonAni_LookUp:	
+		dc.b	$3F
+		dc.b	fr_lookup
+		dc.b	afEnd
+
+SonAni_Duck:	
+		dc.b	$3F
+		dc.b	fr_duck
+		dc.b	afEnd
+
 SonAni_SpinDash:
-		dc.b $3F, fr_warp1, afEnd
-		even
-SonAni_Whistle:	dc.b $3F, fr_warp2, afEnd
-		even
-AniSonic0B:	dc.b $3F, fr_warp3, afEnd
-		even
-SonAni_Balance2:	dc.b $3F, fr_warp4, afEnd
-		even
-SonAni_Stop:	dc.b 7,	fr_stop1, fr_stop2, afEnd
-		even
-SonAni_Float1:	dc.b 7,	fr_float1, fr_float4, afEnd
-		even
-SonAni_Float2:	dc.b 7,	fr_float1, fr_float2, fr_float5, fr_float3, fr_float6, afEnd
-		even
-SonAni_Spring:	dc.b $2F, fr_spring, afChange, 0
-		even
-SonAni_Hang:	dc.b 4,	fr_hang1, fr_hang2, afEnd
-		even
-SonAni_HurtBW:	dc.b $F, fr_leap1, fr_leap1, fr_leap1,	afBack, 1
-		even
-SonAni_Landing:	dc.b $F, fr_leap1, fr_leap2, afBack, 1
-		even
-SonAni_Hang2:	dc.b $3F, fr_surf, afEnd
-		even
-SonAni_GetAir:	dc.b $B, fr_getair, fr_getair, fr_walk15, fr_walk16, afChange, 0
-		even
-SonAni_DeathBW:	dc.b $20, fr_burnt, afEnd
-		even
-SonAni_Drown:	dc.b $2F, fr_drown, afEnd
-		even
-SonAni_Death:	dc.b 3,	fr_death, afEnd
-		even
-SonAni_Hurt:	dc.b 3,	fr_shrink1, fr_shrink2, fr_shrink3, fr_shrink4, fr_shrink5, fr_null, afBack, 1
-		even
-SonAni_Hurt2:	dc.b 3,	fr_injury, afEnd
-		even
-SonAni_Slide:	dc.b 7, fr_injury, fr_waterslide, afEnd
-		even
-SonAni_Hurt3:	dc.b 3,	fr_float1, fr_float2, fr_float5, fr_float3, fr_float6, afEnd
-		even
-SonAni_Float3:	dc.b 3,	fr_float1, afChange, 0
-		even
+		dc.b	0
+		dc.b	fr_spindash1, fr_spindash2, fr_spindash1, fr_spindash3, fr_spindash1
+		dc.b	fr_spindash4, fr_spindash1, fr_spindash5, fr_spindash1, fr_spindash6
+		dc.b	afEnd
+
+SonAni_Stop:
+		dc.b	7
+		dc.b	fr_stop1, fr_stop2
+		dc.b	afEnd
+
+SonAni_Float:	
+		dc.b	7
+		dc.b	fr_float1, fr_float1a
+		dc.b	afEnd
+
+SonAni_FloatSpin:
+		dc.b	7
+		dc.b	fr_float1, fr_float2, fr_float3, fr_float4, fr_float5
+		dc.b	afEnd
+
+SonAni_Spring:	
+		dc.b	$2F
+		dc.b	fr_spring
+		dc.b	afChange, 0
+
+SonAni_HangOn:	
+		dc.b	4
+		dc.b	fr_hangon1, fr_hangon2
+		dc.b	afEnd
+
+SonAni_Victory:
+		dc.b	$F
+		dc.b	fr_victory2, fr_victory1, fr_victory1, fr_victory1, fr_victory2, fr_victory3
+		dc.b	afBack, 2
+
+SonAni_Hang:
+		dc.b	$13
+		dc.b	fr_hang1, fr_hang2
+		dc.b	afEnd
+
+SonAni_Slide:
+		dc.b	7
+		dc.b	fr_injury1, fr_injury2
+		dc.b	afEnd
+
+SonAni_GetAir:
+		dc.b	$B
+		dc.b	fr_getair, fr_getair, fr_walk15, fr_walk16
+		dc.b	afChange, 0
+
+SonAni_Drown:
+		dc.b	$3F
+		dc.b	fr_drown
+		dc.b	afEnd
+
+SonAni_Hurt:
+		dc.b	3
+		dc.b	fr_injury1
+		dc.b	afEnd
+
+SonAni_Death:
+		dc.b	$3F
+		dc.b	fr_death
+		dc.b	afEnd
+
 SonAni_Blank:
+		dc.b	$77
+		dc.b	fr_null
+		dc.b	afEnd
+
 SonAni_Transform:
+		dc.b	2
+		dc.b	fr_transform1, fr_transform1, fr_transform2, fr_transform2
+		dc.b	fr_transform3
+		dc.b	fr_transform4, fr_transform5, fr_transform4, fr_transform5, fr_transform4, fr_transform5, fr_transform4, fr_transform5
+		dc.b	afChange, 0
+
 AniSonic20:
 AniSonic21:
 SonAni_Carry:
