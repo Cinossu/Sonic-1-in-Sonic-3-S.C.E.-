@@ -13,10 +13,17 @@ Map_SStom_12:	dc.b 0, 3
 		dc.b $E0, $B, 0, $1F, $FF, $F4
 		dc.b 0, $B, $10, $1F, $FF, $F4
 		dc.b $F0, 3, 0, $2B, 0, $C
+	if Sonic1Spikes=0
 Map_SStom_26:	dc.b 0, 3
 		dc.b $E8, $C, $19, $5C, $FF, $F0
 		dc.b $FC, $C, $19, $60, $FF, $F0
 		dc.b $10, $C, $19, $5C, $FF, $F0
+	else
+Map_SStom_26:	dc.b 0, 3
+		dc.b $E8, $C, $19, $5C, $FF, $F0
+		dc.b $FC, $C, $19, $5C, $FF, $F0
+		dc.b $10, $C, $19, $5C, $FF, $F0
+	endif
 Map_SStom_3A:	dc.b 0, 1
 		dc.b $F0, 3, 8, $2B, $FF, $FC
 Map_SStom_42:	dc.b 0, 2

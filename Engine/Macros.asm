@@ -315,7 +315,7 @@ __LABEL__ label *
 
 titlecardresultsobjdata macro address,xdest,xpos,ypos,frame,width,exit
 	dc.l address									; object address
-	dc.w 128+xdest,128+xpos,128+ypos						; x destination, xpos, ypos
+	dc.w xdest+128,xpos+128,ypos+128						; x destination, xpos, ypos
 	dc.b frame,(width/2)								; mapping frame, width
 	dc.w exit									; place in exit queue
     endm
@@ -1600,6 +1600,8 @@ dScroll_Data macro pixel,size,velocity,plane
 ; ---------------------------------------------------------------------------
 
 ; macro for defining title card letters in conjunction with the remapped character set
+	if Sonic1TitleCard=0
+
 titlecardLetters macro opt,str
 	save
 	codepage TITLECARD
@@ -1637,6 +1639,28 @@ titlecardLetters macro opt,str
 	dc.b -1	; end marker
 	restore
     endm
+
+	else
+
+titlecardLetters macro str
+	save
+	codepage TITLECARD2
+.narrow := "I"
+.wide := "W"
+    irpc char,str
+	if strstr(.narrow,"char") >= 0
+	    dc.w 'char', 1-1								; narrow (8x16)
+	elseif strstr(.wide,"char") >= 0
+	    dc.w 'char', 3-1								; wide (24x16)
+	else
+	    dc.w 'char', 2-1								; normal (16x16)
+	endif
+    endm
+	dc.w	-1
+	restore
+    endm
+    
+	endif
 ; ---------------------------------------------------------------------------
 
 ; macro for title card letters from a string
@@ -1749,6 +1773,15 @@ optstr macro str
 	charset '0','9', 30
 	charset '!', 40
 	restore
+
+	if Sonic1TitleCard=1
+	save
+	codepage TITLECARD2
+	charset 'A',0
+	charset 'B',"\4\8\xC\x10\x14\x18\x1C\x20\x22\x26\x2A\x2E\x32\x36\x3A\x3E\x42\x46\x4A\x4E\x52\x56\x5C\x60\x64"
+	charset '.', $68
+	restore
+	endif
 
 	; codepage for credits
 	save

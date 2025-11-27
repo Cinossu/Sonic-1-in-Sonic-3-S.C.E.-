@@ -21,12 +21,21 @@ Map_CStom_16:	dc.b 0, 5
 		dc.b $EC, $F, 0, $F, $FF, $F0
 		dc.b $F4, $A, 8, 6, 0, $10
 		dc.b $F4, 6, 8, 0, 0, $28
+	if Sonic1Spikes=0
 Map_CStom_36:	dc.b 0, 5
 		dc.b $F0, 3, $11, $64, $FF, $D4
 		dc.b $F0, 3, $11, $68, $FF, $E8
 		dc.b $F0, 3, $11, $64, $FF, $FC
 		dc.b $F0, 3, $11, $68, 0, $10
 		dc.b $F0, 3, $11, $64, 0, $24
+	else
+Map_CStom_36:	dc.b 0, 5
+		dc.b $F0, 3, $11, $60, $FF, $D4
+		dc.b $F0, 3, $11, $60, $FF, $E8
+		dc.b $F0, 3, $11, $60, $FF, $FC
+		dc.b $F0, 3, $11, $60, 0, $10
+		dc.b $F0, 3, $11, $60, 0, $24
+	endif
 Map_CStom_56:	dc.b 0, 1
 		dc.b $DC, $F, $10, $F, $FF, $F0
 Map_CStom_5E:	dc.b 0, 2

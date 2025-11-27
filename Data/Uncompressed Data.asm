@@ -35,8 +35,11 @@
 ; ===========================================================================
 
 ;		Attribute	| Filename	| Folder
-
+	if Sonic1TitleCard=0
 		incfile.be	ArtUnc_TitleCardLargeText, "Objects/Main/Title Card/Uncompressed Art/Large Text.unc"
+	else
+		incfile.be	ArtUnc_TitleCardLargeText, "Objects/Main/Title Card/Uncompressed Art/Large Text (Sonic 1).unc"
+	endif
 
 ; ===========================================================================
 ; Uncompressed Title screen graphics

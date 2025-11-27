@@ -125,12 +125,19 @@
 ; ===========================================================================
 
 ;		Attribute	| Filename	| Folder
-
-		incfile.b	ArtKosPM_TitleCardRedAct, "Objects/Main/Title Card/KosinskiPM Art/Title Card Red ACT.kospm"
-		incfile.b	ArtKosPM_TitleCardNum1, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 1.kospm"
-		incfile.b	ArtKosPM_TitleCardNum2, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 2.kospm"
-		incfile.b	ArtKosPM_TitleCardNum3, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 3.kospm"
-		incfile.b	ArtKosPM_TitleCardNum4, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 4.kospm"
+	if Sonic1TitleCard=0
+		incfile.b	ArtKosPM_TitleCardMain, "Objects/Main/Title Card/KosinskiPM Art/Title Card Red ACT.kospm"
+		incfile.b	ArtKosPM_TitleCardAct1, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 1.kospm"
+		incfile.b	ArtKosPM_TitleCardAct2, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 2.kospm"
+		incfile.b	ArtKosPM_TitleCardAct3, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 3.kospm"
+		incfile.b	ArtKosPM_TitleCardAct4, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 4.kospm"
+	else
+		incfile.b	ArtKosPM_TitleCardMain, "Objects/Main/Title Card/KosinskiPM Art/Title Card Main (Sonic 1).kospm"
+		incfile.b	ArtKosPM_TitleCardAct1, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 1 (Sonic 1).kospm"
+		incfile.b	ArtKosPM_TitleCardAct2, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 2 (Sonic 1).kospm"
+		incfile.b	ArtKosPM_TitleCardAct3, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 3 (Sonic 1).kospm"
+		incfile.b	ArtKosPM_TitleCardAct4, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 4 (Sonic 1).kospm"
+	endif
 
 ; ===========================================================================
 ; Kosinski Plus Module compressed Sega screen graphics

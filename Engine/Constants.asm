@@ -734,6 +734,17 @@ ArtTile_Spring =						$48C
         endif
 ArtTile_Monitors =						$4AC
 ArtTile_CutsceneKnuckles =					$4DA
+
+        if Sonic1TitleCard=0
+ArtTile_TitleCard =                                             $500
+ArtTile_TitleCardAct =                                          $53D
+ArtTile_TitleCardName =                                         $54D
+        else
+ArtTile_TitleCard =                                             $500
+ArtTile_TitleCardAct =                                          $52C
+ArtTile_TitleCardName =                                         $532
+        endif
+
 ArtTile_Explosion =						$5A0
 ArtTile_EnemyPoints =                                           $5E4
 ArtTile_StarPost =						$5EC

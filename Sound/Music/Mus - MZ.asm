@@ -220,10 +220,10 @@ Mus83_MZ_Call05:
 
 ; DAC Data
 Mus83_MZ_DAC:
-	dc.b	nRst, $06, dSnareS3, $03, $03, $0C, dKickS3, $0C, $0C, $0C
+	dc.b	nRst, $06, dSnare, $03, $03, $0C, dKick, $0C, $0C, $0C
 
 Mus83_MZ_Jump00:
-	dc.b	dKickS3, $0C
+	dc.b	dKick, $0C
 	smpsJump            Mus83_MZ_Jump00
 
 Mus83_MZ_Call02:

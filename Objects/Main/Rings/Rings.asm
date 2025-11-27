@@ -180,7 +180,17 @@ Obj_Bouncing_Ring_Normal:
 		move.w	(Level_repeat_offset).w,d0
 		sub.w	d0,x_pos(a0)
 		Add_SpriteToCollisionResponseList a1
+	if RingSpillFlash=1
+		move.b	(Ring_spill_anim_counter).w,d0
+		bmi.s	.draw
+		andi.b	#1,d0
+		beq.s	.nodraw
+.draw
+	endif
 		jmp	(Draw_Sprite).w
+.nodraw
+		rts
+
 ; ---------------------------------------------------------------------------
 
 .delete

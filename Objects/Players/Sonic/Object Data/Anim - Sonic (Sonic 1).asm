@@ -36,26 +36,41 @@ SonAni_Walk:
 		dc.b	$FF
 		dc.b	fr_walk13, fr_walk14, fr_walk15, fr_walk16, fr_walk11, fr_walk12
 		dc.b	afEnd
-
+	rept 8
+		dc.b	afEnd
+	endr
+	
 SonAni_Run:	
 		dc.b	$FF
 		dc.b	fr_run11, fr_run12, fr_run13, fr_run14
 		dc.b	afEnd
+	rept 8
+		dc.b	afEnd
+	endr
 
 SonAni_Roll:	
 		dc.b	$FE
 		dc.b	fr_roll1, fr_roll2, fr_roll3, fr_roll4, fr_roll5
 		dc.b	afEnd
+	rept 8
+		dc.b	afEnd
+	endr
 
 SonAni_RollFast:	
 		dc.b	$FE
 		dc.b	fr_roll1, fr_roll2, fr_roll5, fr_roll3, fr_roll4, fr_roll5
 		dc.b	afEnd
+	rept 8
+		dc.b	afEnd
+	endr
 
 SonAni_Push:	
 		dc.b	$FD
 		dc.b	fr_push1, fr_push2, fr_push3, fr_push4
 		dc.b	afEnd
+	rept 8
+		dc.b	afEnd
+	endr
 
 SonAni_Wait:	
 		dc.b	$17
