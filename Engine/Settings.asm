@@ -41,13 +41,13 @@ NoFallingAnimation:                     = 1     ; if 1, falling animation trigge
 NoProjectileSFX:                        = 1     ; if 1, disables additional projectile sound effects added to Sonic 3-ify badniks
 
 ; Sonic 1 style options
-Sonic1Palette:                          = 1     ; if 1, Sonic's palette becomes a "Sonic 1" palette, with a yellow and lighter blue in the place of oranges
+Sonic1Palette:                          = 0     ; if 1, Sonic's palette becomes a "Sonic 1" palette, with a yellow and lighter blue in the place of oranges
 Sonic1Sonic:                            = 1     ; if 1, Sonic 1 Sonic sprite is used (a lot of missing animations for now)
 Sonic1Rings:                            = 1     ; if 1, Sonic 1/2 thinner rings art
 Sonic1TitleCard:                        = 1     ; if 1, Sonic 1-style titlecards
-TitleCardWaitPreload:                   = 90            ; the wait time prior to loading (before fade-in)
-TitleCardWaitFadeload:                  = 20            ; the wait time prior to fading
-TitleCardWaitPostload:                  = 40            ; the wait time after loading (after fade-in)
+S1TitleCardWaitPreload:                 = 90            ; Wait time before fade-in, during first PLC set load (0 to disable)
+S1TitleCardWaitFadeload:                = 20            ; Wait time during fade-in, before controls unlock (0 to disable)
+S1TitleCardWaitPostload:                = 40            ; Wait time after fade-in, before second PLC set load (0 to disable)
 Sonic1HUD:                              = 1     ; if 1, Sonic 1-style HUD art
 Sonic1EnemyPoints:                      = 1     ; if 1, Sonic 1-style enemy points art
 Sonic1Animals:                          = 1     ; if 1, Sonic 1-style animals art

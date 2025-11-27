@@ -132,7 +132,11 @@
 		incfile.b	ArtKosPM_TitleCardAct3, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 3.kospm"
 		incfile.b	ArtKosPM_TitleCardAct4, "Objects/Main/Title Card/KosinskiPM Art/Title Card Number 4.kospm"
 	else
+	    if Sonic1Palette=0
+		incfile.b	ArtKosPM_TitleCardMain, "Objects/Main/Title Card/KosinskiPM Art/Title Card Main (Sonic 1) S3 Palette.kospm"
+	    else
 		incfile.b	ArtKosPM_TitleCardMain, "Objects/Main/Title Card/KosinskiPM Art/Title Card Main (Sonic 1).kospm"
+	    endif
 		incfile.b	ArtKosPM_TitleCardAct1, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 1 (Sonic 1).kospm"
 		incfile.b	ArtKosPM_TitleCardAct2, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 2 (Sonic 1).kospm"
 		incfile.b	ArtKosPM_TitleCardAct3, "Objects/Main/Title Card/KosinskiPM Art/Title Card Act 3 (Sonic 1).kospm"
@@ -206,7 +210,11 @@
 		incfile.b	ArtKosPM_MZBlock, "Objects/Environ/Moving Blocks/KosinskiPM Art/Green Pushable Block.kospm"
 		incfile.b	ArtKosPM_MZMetal, "Objects/Environ/Chained Stompers/KosinskiPM Art/Metal Blocks.kospm"
 		incfile.b	ArtKosPM_MZGlass, "Objects/Environ/Glass Block/KosinskiPM Art/Glass Block.kospm"
+	if Sonic1Palette=0
 		incfile.b	ArtKosPM_Bumper, "Objects/Environ/Bumper/KosinskiPM Art/Bumper.kospm"
+	else
+		incfile.b	ArtKosPM_Bumper, "Objects/Environ/Bumper/KosinskiPM Art/Bumper (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_LargeSpikeball, "Objects/Environ/Big Spiked Ball/KosinskiPM Art/Large Spikeball.kospm"
 		incfile.b	ArtKosPM_SmallSpikeball, "Objects/Environ/Spiked Ball and Chain/KosinskiPM Art/Small Spikeball.kospm"
 		incfile.b	ArtKosPM_SpikedBallandChain, "Objects/Environ/Spiked Ball and Chain/KosinskiPM Art/Spiked Ball and Chain.kospm"

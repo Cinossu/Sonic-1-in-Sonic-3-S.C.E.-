@@ -35,8 +35,8 @@ Obj_TitleCard:
 		st	objoff_48(a0)
 		move.l	#.create,address(a0)
 		move.w	#1*60+30,objoff_2E(a0)						; set wait value
-	if Sonic1TitleCard=1&&TitleCardWaitPreload>0
-		move.w	#TitleCardWaitPreload,objoff_36(a0)
+	if Sonic1TitleCard=1&&S1TitleCardWaitPreload>0
+		move.w	#S1TitleCardWaitPreload,objoff_36(a0)
 	endif
 		rts
 ; ---------------------------------------------------------------------------
@@ -110,7 +110,7 @@ Obj_TitleCard:
 
 .branch
 		move.l	#.branch,address(a0)
-	if Sonic1TitleCard=1&&TitleCardWaitPreload>0
+	if Sonic1TitleCard=1&&S1TitleCardWaitPreload>0
 		subi.w	#1,objoff_36(a0)
 		bne.s	.return
 	endif
@@ -132,22 +132,22 @@ Obj_TitleCard:
 .notresults
 		clr.w	objoff_48(a0)
 		move.l	#.waitfade,address(a0)
-	if Sonic1TitleCard=1&&TitleCardWaitFadeload>0
-		move.w	#20,objoff_36(a0)						; wait one third of a second...
+	if Sonic1TitleCard=1&&S1TitleCardWaitFadeload>0
+		move.w	#S1TitleCardWaitFadeload,objoff_36(a0)				; wait one third of a second...
 	endif
 		rts
 ; ---------------------------------------------------------------------------
 
 .waitfade
 	if Sonic1TitleCard=1
-	    if TitleCardWaitFadeload>0
+	    if S1TitleCardWaitFadeload>0
 		subi.w	#1,objoff_36(a0)
 		bne.s	.return
 	    endif
 		clr.w	(Ctrl_1_locked).w						; unlock control 1 and control 2
-	    if TitleCardWaitPostload>0
+	    if S1TitleCardWaitPostload>0
 		move.l	#.waitmove,address(a0)
-		move.w	#TitleCardWaitPostload,objoff_36(a0)
+		move.w	#S1TitleCardWaitPostload,objoff_36(a0)
 .waitmove
 		subi.w	#1,objoff_36(a0)
 		bne.s	.return
