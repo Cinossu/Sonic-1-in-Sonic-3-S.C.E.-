@@ -279,5 +279,5 @@ ObjDat_Bubbler:		subObjMainData \
 
 		; mappings
 		include "Objects/Main/Bubbler/Object Data/Anim - Bubbler.asm"
-		include "Objects/Main/Bubbler/Object Data/Map - Bubbler2.asm"
 		include "Objects/Main/Bubbler/Object Data/Map - Bubbler.asm"
+		include "Objects/Main/Bubbler/Object Data/Map - Bubbler 2P.asm"

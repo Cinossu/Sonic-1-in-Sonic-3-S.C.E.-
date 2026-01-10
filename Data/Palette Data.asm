@@ -5,12 +5,13 @@
 ;		Attribute	| Filename	| Folder
 	if Sonic1Palette=0
 		incfile.be	Pal_Sonic, "Objects/Players/Sonic/Palettes/Sonic.pal"
+		incfile.be	Pal_WaterSonicLZ, "Objects/Players/Sonic/Palettes/Water Sonic (LZ).pal"
 	else
 		incfile.be	Pal_Sonic, "Objects/Players/Sonic/Palettes/Sonic (Sonic 1).pal"
+		incfile.be	Pal_WaterSonicLZ, "Objects/Players/Sonic/Palettes/Water Sonic (LZ) (Sonic 1).pal"
 	endif
 		incfile.be	Pal_WaterSonic, "Objects/Players/Sonic/Palettes/Water Sonic.pal"
-		incfile.be	Pal_WaterSonicLZ, "Objects/Players/Sonic/Palettes/Water Sonic(LZ).pal"
-		incfile.be	Pal_WaterSonicSBZ, "Objects/Players/Sonic/Palettes/Water Sonic(SBZ).pal"
+		incfile.be	Pal_WaterSonicSBZ, "Objects/Players/Sonic/Palettes/Water Sonic (SBZ).pal"
 		incfile.be	Pal_Knuckles, "Objects/Players/Knuckles/Palettes/Knuckles.pal"
 		incfile.be	Pal_WaterKnuckles, "Objects/Players/Knuckles/Palettes/Water Knuckles.pal"
 		incfile.be	Pal_WaterKnucklesLZ, "Objects/Players/Knuckles/Palettes/Water Knuckles(LZ).pal"

@@ -80,7 +80,13 @@
 		incfile.b	ArtKosPM_GrayButton, "Objects/Main/Button/KosinskiPM Art/Gray Button.kospm"
 		incfile.b	ArtKosPM_MZGrayButton, "Objects/Main/Button/KosinskiPM Art/MZ Gray Button.kospm"
 		incfile.b	ArtKosPM_DiagonalSpring, "Objects/Main/Spring/KosinskiPM Art/Diagonal Spring.kospm"
+	if Sonic1Bubbles=0
 		incfile.b	ArtKosPM_Bubbles, "Objects/Main/Bubbler/KosinskiPM Art/Bubbles.kospm"
+	elseif Sonic1Palette=0
+		incfile.b	ArtKosPM_Bubbles, "Objects/Main/Bubbler/KosinskiPM Art/Bubbles (Sonic 1) S3 Palette.kospm"
+	else
+		incfile.b	ArtKosPM_Bubbles, "Objects/Main/Bubbler/KosinskiPM Art/Bubbles (Sonic 1).kospm"
+	endif
 		incfile.b	ArtKosPM_WaveSplash, "Objects/Main/Wave Splash/KosinskiPM Art/Wave Splash.kospm"
 		incfile.b	ArtKosPM_WaveSplashLZ, "Objects/Main/Wave Splash/KosinskiPM Art/Wave Splash(LZ).kospm"
 		incfile.b	ArtKosPM_EggCapsule, "Objects/Main/Egg Capsule/KosinskiPM Art/Egg Capsule.kospm"

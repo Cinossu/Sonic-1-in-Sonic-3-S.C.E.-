@@ -27,7 +27,13 @@
 		incfile.b	ArtUnc_BigRingFlash, "Objects/Main/Big Ring/Uncompressed Art/Big Ring Flash.unc"
 		incfile.be	ArtUnc_RobotnikShip1, "Objects/Bosses/Robotnik/Uncompressed Art/Robotnik Ship 1.unc"
 		incfile.be	ArtUnc_RobotnikShip2, "Objects/Bosses/Robotnik/Uncompressed Art/Robotnik Ship 2.unc"
+	if Sonic1Bubbles=0
 		incfile.b	ArtUnc_AirCountDown, "Objects/Main/Count Down/Uncompressed Art/Air Countdown.unc"
+	elseif Sonic1Palette=0
+		incfile.b	ArtUnc_AirCountDown, "Objects/Main/Count Down/Uncompressed Art/Air Countdown (Sonic 1) S3 Palette.unc"
+	else
+		incfile.b	ArtUnc_AirCountDown, "Objects/Main/Count Down/Uncompressed Art/Air Countdown (Sonic 1).unc"
+	endif
 		incfile.b	ArtUnc_WaterSplash, "Objects/Main/Water Splash/Uncompressed Art/Water Splash.unc"
 
 ; ===========================================================================

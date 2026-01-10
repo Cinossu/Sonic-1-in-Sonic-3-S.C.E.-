@@ -41,7 +41,7 @@ NoFallingAnimation:                     = 1     ; if 1, falling animation trigge
 NoProjectileSFX:                        = 1     ; if 1, disables additional projectile sound effects added to Sonic 3-ify badniks
 
 ; Sonic 1 style options
-Sonic1Palette:                          = 0     ; if 1, Sonic's palette becomes a "Sonic 1" palette, with a yellow and lighter blue in the place of oranges
+Sonic1Palette:                          = 1     ; if 1, Sonic's palette becomes a "Sonic 1" palette, with a yellow and lighter blue in the place of oranges
 Sonic1Sonic:                            = 1     ; if 1, Sonic 1 Sonic sprite is used (a lot of missing animations for now)
 Sonic1Rings:                            = 1     ; if 1, Sonic 1/2 thinner rings art
 Sonic1TitleCard:                        = 1     ; if 1, Sonic 1-style titlecards
@@ -58,3 +58,4 @@ Sonic1Shield:                           = 1     ; if 1, Sonic 1-style blue shiel
 Sonic1Invincibility:                    = 1     ; if 1, Sonic 1-style invincibility art
 Sonic1Spikes:                           = 1     ; if 1, Sonic 1-style spikes art
 Sonic1Spring:                           = 1     ; if 1, Sonic 1-style spring art
+Sonic1Bubbles:                          = 1     ; if 1, Sonic 1-style air bubbles and countdown art

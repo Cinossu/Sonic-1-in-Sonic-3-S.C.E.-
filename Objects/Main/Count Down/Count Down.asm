@@ -13,7 +13,7 @@ Obj_AirCountdown:
 		; check player
 		tst.b	parent+1(a0)							; is Tails?
 		beq.s	.countdown							; if not, branch
-		move.l	#Map_Bubbler2,mappings(a0)					; 2P
+		move.l	#Map_Bubbler_2P,mappings(a0)					; 2P
 
 .countdown
 		movea.w	parent(a0),a2							; a2=character

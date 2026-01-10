@@ -3,7 +3,7 @@
   <Images>
     <ImageFromMappings id="spawner">
       <ArtFile filename="../../Objects/Main/Bubbler/KosinskiPM Art/Bubbles.kospm" compression="KosinskiPlusM" />
-      <MapFile type="ASM" filename="../../Objects/Main/Bubbler/Object Data/Map - Bubbler.asm" label="word_2FD82" />
+      <MapFile type="ASM" filename="../../Objects/Main/Bubbler/Object Data/Map - Bubbler.asm" label="Map_Bubbler_Spawn1" />
     </ImageFromMappings>
   </Images>
 </ObjDef>
