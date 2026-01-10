@@ -1672,12 +1672,6 @@ locret_11A14:
 ; =============== S U B R O U T I N E =======================================
 
 Sonic_Transform:
-
-.artsize	:= (ArtUnc_SuperSonicLifeIcon_end-ArtUnc_SuperSonicLifeIcon)&$FFFF
-
-		; load Super Sonic life icon art
-		QueueStaticDMA ArtUnc_SuperSonicLifeIcon,.artsize,tiles_to_bytes(ArtTile_LifeIcon)
-
 		move.b	#1,(Super_palette_status).w					; set Super/Hyper palette status to 'fading'
 		move.b	#$F,(Palette_timer).w
 		move.w	#60,(Super_frame_count).w
@@ -1814,11 +1808,6 @@ SonicKnux_SuperHyper:
 		tst.b	character_id(a0)						; is this Sonic?
 		bne.s	.notSonic
 		move.l	#Map_Sonic,mappings(a0)						; if so, load Sonic's normal mappings (was using Super/Hyper mappings)
-
-.artsize	:= (ArtUnc_SonicLifeIcon_end-ArtUnc_SonicLifeIcon)&$FFFF
-
-		; load Sonic life icon art
-		QueueStaticDMA ArtUnc_SonicLifeIcon,.artsize,tiles_to_bytes(ArtTile_LifeIcon)
 
 .notSonic
 		move.b	#1,prev_anim(a0)

@@ -536,11 +536,6 @@ Monitor_Give_SuperSonic:
 		move.w	#$30,Acceleration-Max_speed(a4)					; set acceleration
 		move.w	#$100,Deceleration-Max_speed(a4)				; set deceleration
 
-.artsize	:= (ArtUnc_SuperSonicLifeIcon_end-ArtUnc_SuperSonicLifeIcon)&$FFFF
-
-		; load Super Sonic life icon art
-		QueueStaticDMA ArtUnc_SuperSonicLifeIcon,.artsize,tiles_to_bytes(ArtTile_LifeIcon)
-
 		; set
 		st	(Super_Sonic_Knux_flag).w
 		move.l	#Map_SuperSonic,mappings(a2)
