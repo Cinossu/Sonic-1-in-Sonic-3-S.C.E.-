@@ -20,6 +20,9 @@
 		; SBZ
 		include "Levels/SBZ/Debug/SBZ1 - Debug List.asm"
 
+		; Test
+		include "Levels/Test/Debug/Test - Debug List.asm"
+
 ; ===========================================================================
 ; Debug mode item pointers Special Stage screen data
 ; ===========================================================================

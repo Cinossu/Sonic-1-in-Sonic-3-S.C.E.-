@@ -93,6 +93,8 @@
 		incfile.be	Pal_SBZ3, "Levels/LZ/Palettes/Scrap Brain Zone Act 3.pal"
 		incfile.be	Pal_WaterSBZ3, "Levels/LZ/Palettes/Water Scrap Brain Zone Act 3.pal"
 		incfile.be	Pal_Ending, "Levels/GHZ/Palettes/Green Hill Zone Ending.pal"
+		incfile.be	Pal_Test, "Levels/Test/Palettes/Test.pal"
+		incfile.be	Pal_WaterTest, "Levels/Test/Palettes/Water Test.pal"
 		incfile.b	Pal_Credits, "Screens/Credits/Palettes/1.pal"
 
 ; ===========================================================================

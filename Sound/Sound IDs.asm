@@ -56,6 +56,8 @@ mus_S3Credits				ds.b 1		; $15
 mus_Drowning				ds.b 1		; $16
 mus_Emerald				ds.b 1		; $17
 
+mus_Test				equ mus_MidBoss
+
 mus__End =				*		; next ID after last music
 
 	dephase

@@ -59,6 +59,11 @@
 		include "Levels/SBZ/Events/FZ - Resize.asm"
 		include "Levels/SBZ/Events/FZ - Spawn.asm"
 
+		; Debug
+		include "Levels/Test/Palettes/Animated/Test - Animate Palette.asm"
+		include "Levels/Test/Events/Test - Events.asm"
+		include "Levels/Test/Events/Test - Resize.asm"
+
 		; Ending
 		include "Levels/GHZ/Tiles/Animated/Ending - Animation PLC Scripts.asm"
 		include "Levels/GHZ/Events/Ending - Events.asm"

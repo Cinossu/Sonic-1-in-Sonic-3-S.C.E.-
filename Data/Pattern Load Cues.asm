@@ -649,6 +649,20 @@ PLC2_SBZ4_After: plrlistheader
 PLC2_SBZ4_After_end
 
 ; ===========================================================================
+; Pattern load cues - Test (Before)
+; ===========================================================================
+
+PLC1_Test_Before: plrlistheader
+PLC1_Test_Before_end
+
+; ===========================================================================
+; Pattern load cues - Test (After)
+; ===========================================================================
+
+PLC2_Test_After: plrlistheader
+PLC2_Test_After_end
+
+; ===========================================================================
 ; Level pattern load cues
 ; Load animals graphics
 ; ===========================================================================
@@ -706,3 +720,12 @@ PLCAnimals_SBZ1: plrlistheader
 		plreq $580, ArtKosPM_Rabbit
 		plreq $592, ArtKosPM_Chicken
 PLCAnimals_SBZ1_end
+
+; ===========================================================================
+; Pattern load cues - Animals (Test)
+; ===========================================================================
+
+PLCAnimals_Test: plrlistheader
+		plreq $580, ArtKosPM_Rabbit
+		plreq $592, ArtKosPM_BlueFlicky
+PLCAnimals_Test_end

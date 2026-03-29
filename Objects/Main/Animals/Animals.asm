@@ -18,11 +18,12 @@ animal_ground_pointer				= objoff_34	; .l
 Obj_Animal_ZoneAnimals:
 		zoneanimals.b Rabbit, Flicky	; GHZ
 		zoneanimals.b Squirrel, Seal	; MZ
-		zoneanimals.b Pig, Chicken		; SYZ
+		zoneanimals.b Pig, Chicken	; SYZ
 		zoneanimals.b Penguin, Seal	; LZ
-		zoneanimals.b Pig, Flicky		; SLZ
+		zoneanimals.b Pig, Flicky	; SLZ
 		zoneanimals.b Rabbit, Chicken	; SBZ
-
+		zoneanimals.b Rabbit, Flicky	; TEST
+		
 		zonewarning Obj_Animal_ZoneAnimals,(1*2)
 
 ; ---------------------------------------------------------------------------

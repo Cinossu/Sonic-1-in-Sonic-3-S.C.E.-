@@ -430,6 +430,7 @@ ObjArray_TtlCard_ZoneIndex: offsetTable
 		offsetTableEntry.w ObjArray_TtlCard_LZ	; 6
 		offsetTableEntry.w ObjArray_TtlCard_SLZ	; 8
 		offsetTableEntry.w ObjArray_TtlCard_SBZ	; A
+		offsetTableEntry.w ObjArray_TtlCard_TEST; C
 
 		;	Zone Name	Zone		Act		Circle
 		;	x, xdest	x,     xdest	x,    xdest	x,    xdest
@@ -445,6 +446,8 @@ ObjArray_TtlCard_SLZ:
 		dc.w	0, $120,	$FEFC, $13C,	$414, $154,	$214, $154
 ObjArray_TtlCard_SBZ:
 		dc.w	0, $120,	$FF04, $144,	$41C, $15C,	$21C, $15C
+ObjArray_TtlCard_TEST:
+		dc.w	0, $120,	$FEE4, $124,	$3EC, $3EC,	$1EC, $12C
 ObjArray_TtlCard_FZ:
 		dc.w	0, $120,	$FEE4, $124,	$3EC, $3EC,	$1EC, $12C
 	endif

@@ -3,7 +3,7 @@
 ; ===========================================================================
 
 ; assembly options
-ZoneCount:				= 6	; set discrete zones are: GHZ, MZ, SYZ, LZ, SLZ, SBZ
+ZoneCount:				= 7	; set discrete zones are: GHZ, MZ, SYZ, LZ, SLZ, SBZ
 LevelSelectCheat:			= 1	; if 1, enable level select cheat check
 GameDebugCheat:				= 1	; if 1, enable debug mode cheat check
 GameDebug:				= 1	; if 1, enable debug mode for player

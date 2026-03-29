@@ -13,6 +13,7 @@ Map_TitleCard:
 		dc.w Map_TitleCard_LZ-Map_TitleCard		; LABYRINTH
 		dc.w Map_TitleCard_SLZ-Map_TitleCard		; STAR LIGHT
 		dc.w Map_TitleCard_SBZ-Map_TitleCard		; SCRAP BRAIN
+		dc.w Map_TitleCard_TEST-Map_TitleCard		; TEST
 		dc.w Map_TitleCard_FZ-Map_TitleCard		; FINAL
 
 Map_TitleCard_Circle:
@@ -88,4 +89,8 @@ Map_TitleCard_FZ:
 		dc.b $F8, $D, $80, $38, $FF, $F4	; NA
 		dc.b $F8,  5, $80, $40, $00, $14	; L
 
+Map_TitleCard_TEST:
+		dc.w 2
+		dc.b $F8, $D, $80, $32, $FF, $DC	; TE
+		dc.b $F8, $D, $80, $3A, $FF, $FC	; ST
 		even

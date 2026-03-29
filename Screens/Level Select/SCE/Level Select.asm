@@ -14,8 +14,9 @@ LevelSelect_ActSYZCount:		= 3	; SYZ
 LevelSelect_ActLZCount:			= 4	; LZ
 LevelSelect_ActSLZCount:		= 3	; SLZ
 LevelSelect_ActSBZCount:		= 3	; SBZ
+LevelSelect_ActTESTCount:		= 1	; Test
 
-LevelSelect_SpecialStageCount:		= 6
+LevelSelect_SpecialStageCount:		= 7
 LevelSelect_CharacterCount:		= LevelSelect_SpecialStageCount+1
 LevelSelect_MusicTestCount:		= LevelSelect_CharacterCount+1
 LevelSelect_SoundTestCount:		= LevelSelect_MusicTestCount+1
@@ -275,6 +276,7 @@ LevelSelect_Controls:
 		dc.w LevelSelect_ActLZCount-1	; LZ
 		dc.w LevelSelect_ActSLZCount-1	; SLZ
 		dc.w LevelSelect_ActSBZCount-1	; SBZ
+		dc.w LevelSelect_ActTESTCount-1; TEST
 
 		zonewarning .maxacts,(2*1)
 
@@ -768,6 +770,10 @@ LevelSelect_ActTextIndex: offsetTable
 		offsetTableEntry.w LevelSelect_LoadAct2		; SBZ2
 		offsetTableEntry.w LevelSelect_LoadFinal	; SBZ3
 		offsetTableEntry.w LevelSelect_LoadAct4		; SBZ4
+		offsetTableEntry.w LevelSelect_LoadAct1		; TEST
+		offsetTableEntry.w LevelSelect_LoadAct2		; TEST
+		offsetTableEntry.w LevelSelect_LoadAct3		; TEST
+		offsetTableEntry.w LevelSelect_LoadAct4		; TEST
 
 		zonewarning LevelSelect_ActTextIndex,(2*4)
 ; --------------------------------------------------------------------------
@@ -807,6 +813,7 @@ LevelSelect_MainText:
 		levselstr "   LABYRINTH          - ACT 1"
 		levselstr "   STAR LIGHT         - ACT 1"
 		levselstr "   SCRAP BRAIN        - ACT 1"
+		levselstr "   TEST               - ACT 1"
 		levselstr "   SPECIAL STAGE      -"
 		levselstr "   CHARACTER:         -"
 		levselstr "   MUSIC TEST:        -"

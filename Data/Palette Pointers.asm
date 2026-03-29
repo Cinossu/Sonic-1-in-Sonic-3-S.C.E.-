@@ -29,5 +29,8 @@ PalPtr_SBZ1:				palptr Pal_SBZ1, 1				; 12 - SBZ1
 PalPtr_SBZ2:				palptr Pal_SBZ2, 1				; 13 - SBZ2
 PalPtr_SBZ3:				palptr Pal_SBZ3, 1				; 14 - SBZ3
 PalPtr_WaterSBZ3:			palptr Pal_WaterSBZ3, 1				; 15 - Water SBZ3
-PalPtr_Title:				palptr Pal_Title, 0				; 16 - Title
-PalPtr_Ending:				palptr Pal_Ending, 1				; 17 - Ending
+PalPtr_Test:				palptr Pal_Test, 1				; 16 - Test
+PalPtr_WaterTest:			palptr Pal_WaterTest, 1			        ; 17 - Water Test
+
+PalPtr_Title:				palptr Pal_Title, 0				; 18 - Title
+PalPtr_Ending:				palptr Pal_Ending, 1				; 19 - Ending

@@ -9,6 +9,8 @@ TitleCardLetters_Index: offsetTable
 		offsetTableEntry.w TitleCard_LZ		; 6
 		offsetTableEntry.w TitleCard_SLZ	; 8
 		offsetTableEntry.w TitleCard_SBZ	; A
+		offsetTableEntry.w TitleCard_TEST	; C
+
 
 		zonewarning TitleCardLetters_Index,(1*2)
 
@@ -20,4 +22,5 @@ TitleCard_LZ:		titlecardLetters "LABYRINTH"
 TitleCard_SLZ:		titlecardLetters "STARLIGH"
 TitleCard_SBZ:		titlecardLetters "SCRAPBIN"
 TitleCard_FZ:		titlecardLetters "FINAL"
+TitleCard_TEST:		titlecardLetters "TEST"
 	even

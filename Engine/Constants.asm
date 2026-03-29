@@ -197,8 +197,10 @@ PalID_SBZ1 =							id(PalPtr_SBZ1)					; 12
 PalID_SBZ2 =							id(PalPtr_SBZ2)					; 13
 PalID_SBZ3 =							id(PalPtr_SBZ3)					; 14
 PalID_WaterSBZ3 =						id(PalPtr_WaterSBZ3)				; 15
-PalID_Title =							id(PalPtr_Title)				; 16
-PalID_Ending =							id(PalPtr_Ending)				; 17
+PalID_Test =							id(PalPtr_Test)				        ; 16
+PalID_WaterTest =						id(PalPtr_WaterTest)				; 17
+PalID_Title =							id(PalPtr_Title)				; 18
+PalID_Ending =							id(PalPtr_Ending)				; 19
 
 ; ---------------------------------------------------------------------------
 ; Sonic animation IDs

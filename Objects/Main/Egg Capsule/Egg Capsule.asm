@@ -191,6 +191,7 @@ Obj_EggCapsule:
 		dc.l sub_866BA								; LZ
 		dc.l sub_866BA								; SLZ
 		dc.l sub_866BA								; SBZ
+		dc.l sub_866BA								; TEST
 
 		zonewarning .subindex,(1*4)
 

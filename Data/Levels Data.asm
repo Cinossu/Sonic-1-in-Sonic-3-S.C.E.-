@@ -40,6 +40,12 @@ LevelLoadPointer:
 		include "Levels/SBZ/Pointers/Final - Pointers.asm"
 		include "Levels/SBZ/Pointers/SBZ1 - Pointers.asm"	; unused
 
+		; Debug
+		include "Levels/Test/Pointers/Test - Pointers.asm"
+		include "Levels/Test/Pointers/Test - Pointers.asm"
+		include "Levels/Test/Pointers/Test - Pointers.asm"
+		include "Levels/Test/Pointers/Test - Pointers.asm"
+
 		zonewarning LevelLoadPointer,((Level_data_addr_RAM_end-Level_data_addr_RAM)*4)
 
 ; ===========================================================================
@@ -74,6 +80,9 @@ LevelLoadPointer:
 		incfile.b	SBZ_8x8_KosPM, "Levels/SBZ/Tiles/Primary.kospm"
 		incfile.b	SBZ_16x16_Unc, "Levels/SBZ/Blocks/Primary.unc"
 		incfile.b	SBZ_128x128_KosP, "Levels/SBZ/Chunks/Primary.kosp"
+		incfile.b	Test_8x8_KosPM, "Levels/Test/Tiles/Primary.kospm"
+		incfile.b	Test_16x16_Unc, "Levels/Test/Blocks/Primary.unc"
+		incfile.b	Test_128x128_KosP, "Levels/Test/Chunks/1.kosp"
 		incfile.b	Ending_128x128_KosP, "Levels/GHZ/Chunks/Ending.kosp"
 
 ; ===========================================================================
@@ -98,6 +107,7 @@ LevelLoadPointer:
 		incfile.b	LZ_Solid_Unc, "Levels/LZ/Collision/1.unc"
 		incfile.b	SLZ_Solid_Unc, "Levels/SLZ/Collision/1.unc"
 		incfile.b	SBZ_Solid_Unc, "Levels/SBZ/Collision/1.unc"
+		incfile.b	Test_Solid_Unc, "Levels/Test/Collision/1.unc"
 
 ; ===========================================================================
 ; Level layout data
@@ -123,6 +133,7 @@ LevelLoadPointer:
 		incfile.b	SBZ1_Layout_Unc, "Levels/SBZ/Layout/1.unc"
 		incfile.b	SBZ2_Layout_Unc, "Levels/SBZ/Layout/2.unc"
 		incfile.b	SBZ3_Layout_Unc, "Levels/LZ/Layout/SBZ3.unc"
+		incfile.b	Test_Layout_Unc, "Levels/Test/Layout/1.unc"
 		incfile.b	Ending_Layout_Unc, "Levels/GHZ/Layout/Ending.unc"
 
 ; ===========================================================================
@@ -153,6 +164,7 @@ LevelLoadPointer:
 		incfile.bo	SBZ2_Objects_Unc, "Levels/SBZ/Object Pos/2.unc"
 		incfile.bo	SBZ3_Objects_Unc, "Levels/LZ/Object Pos/SBZ3.unc"
 		incfile.bo	Final_Objects_Unc, "Levels/SBZ/Object Pos/Final.unc"
+		incfile.bo	Test_Objects_Unc, "Levels/Test/Object Pos/1.unc"
 		incfile.bo	Ending_Objects_Unc, "Levels/GHZ/Object Pos/Ending.unc"
 
 ; ===========================================================================
@@ -182,6 +194,7 @@ LevelLoadPointer:
 		incfile.br	SBZ1_Rings_Unc, "Levels/SBZ/Ring Pos/1.unc"
 		incfile.br	SBZ2_Rings_Unc, "Levels/SBZ/Ring Pos/2.unc"
 		incfile.br	SBZ3_Rings_Unc, "Levels/LZ/Ring Pos/SBZ3.unc"
+		incfile.br	Test_Rings_Unc, "Levels/Test/Ring Pos/1.unc"
 
 Final_Rings_Unc:	RingLayoutBoundary
 	even
